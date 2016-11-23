@@ -10,7 +10,7 @@ public class BoardInitializer : MonoBehaviour {
     // The prefab of the board, already created
     public GameObject boardGO;
 
-	// Use this for initialization
+	
 	void Start () {
         GameObject cubeBoard = (GameObject) GameObject.Instantiate(boardGO, new Vector3(0,0,0), new Quaternion());
 
@@ -41,12 +41,15 @@ public class BoardInitializer : MonoBehaviour {
                 {
                     GameObject boardCase = boardRow.transform.GetChild(c).gameObject;
                     
-                    //TODO peut etre que l'erreur vient de là 
+                    // TODO: peut etre que l'erreur vient de là 
                     // c, r inversés ?
                     // The current board, column and row.
                     Position position = new Position(boards[b], new Vector2(c, r));
                     boards[b].AddASquare(new Vector2(c, r), boardCase);
-                    
+
+                    // Set of the right board in the case 
+                    Square squareScript = boardCase.GetComponent<Square>();
+                    squareScript.SetBoard(boards[b]);
                 }
             }
         }
@@ -56,7 +59,9 @@ public class BoardInitializer : MonoBehaviour {
 
 
     /// <summary>
-    ///     Initialize the different boards
+    ///     Initialize the different boards : 
+    /// 
+    ///         Convertion matrices
     /// </summary>
     /// <param name="boardAbove">the boards we want to init</param>
     private void InitBoards(Board[] boards)
