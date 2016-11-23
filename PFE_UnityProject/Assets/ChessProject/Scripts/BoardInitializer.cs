@@ -10,18 +10,38 @@ public class BoardInitializer : MonoBehaviour {
     // The prefab of the board, already created
     public GameObject boardGO;
 
-	
-	void Start () {
-        GameObject cubeBoard = (GameObject) GameObject.Instantiate(boardGO, new Vector3(0,0,0), new Quaternion());
+    // A table of 6 boards
+    Board[] boards;
+
+    // Dictionary of the pawns
+    private IDictionary<Position, GameObject> positions = new Dictionary<Position, GameObject>();
+    public IDictionary<Position, GameObject> GetPositions
+    {
+        get
+        {
+            return positions;
+        }
+    }
+
+    void Start () {
+        InitializeBoards();
+	}
+
+    /// <summary>
+    /// Initializes the 6 boards (matrices and squares game objects).
+    /// </summary>
+    private void InitializeBoards()
+    {
+        GameObject cubeBoard = (GameObject)GameObject.Instantiate(boardGO, new Vector3(0, 0, 0), new Quaternion());
 
         // Initialization of data model : boards
-        Board[] boards = new Board[6];
+        boards = new Board[6];
         for (int k = 0; k < boards.Length; k++)
         {
             boards[k] = new Board();
         }
         // Initialization of convert matrices
-        InitBoards(boards);
+        InitBoardsMatrices(boards);
 
 
         IList<Transform> allBoards = new List<Transform>();
@@ -40,7 +60,7 @@ public class BoardInitializer : MonoBehaviour {
                 for (int c = 0; c < boardRow.transform.childCount; c++)
                 {
                     GameObject boardCase = boardRow.transform.GetChild(c).gameObject;
-                    
+
                     // TODO: peut etre que l'erreur vient de là 
                     // c, r inversés ?
                     // The current board, column and row.
@@ -49,13 +69,11 @@ public class BoardInitializer : MonoBehaviour {
 
                     // Set of the right board in the case 
                     Square squareScript = boardCase.GetComponent<Square>();
-                    squareScript.SetBoard(boards[b]);
+                    squareScript.Position = position;
                 }
             }
         }
-	}
-
-
+    }
 
 
     /// <summary>
@@ -64,7 +82,7 @@ public class BoardInitializer : MonoBehaviour {
     ///         Convertion matrices
     /// </summary>
     /// <param name="boardAbove">the boards we want to init</param>
-    private void InitBoards(Board[] boards)
+    private void InitBoardsMatrices(Board[] boards)
     {
 
         Passing up_down = new Passing();
