@@ -13,19 +13,11 @@ public class BoardInitializer : MonoBehaviour {
     // A table of 6 boards
     Board[] boards;
 
-    // Dictionary of the pawns
-    private IDictionary<Position, GameObject> positions = new Dictionary<Position, GameObject>();
-    public IDictionary<Position, GameObject> GetPositions
-    {
-        get
-        {
-            return positions;
-        }
-    }
 
     void Start () {
         InitializeBoards();
 	}
+
 
     /// <summary>
     /// Initializes the 6 boards (matrices and squares game objects).
