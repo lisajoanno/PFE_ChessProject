@@ -5,6 +5,9 @@ public class MoveController : MonoBehaviour {
 
 	public bool Move(Pawn pawn, Square square)
     {
+
+        //TODO gerer team ! (0 ou 1)
+
         pawn.Position = square.Position;
         Board board = pawn.GetComponent<Pawn>().Position.board;
         Vector2 pos = pawn.GetComponent<Pawn>().Position.coo;
