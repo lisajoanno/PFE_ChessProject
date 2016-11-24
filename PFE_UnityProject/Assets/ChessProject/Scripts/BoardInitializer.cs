@@ -11,20 +11,15 @@ public class BoardInitializer : MonoBehaviour {
     public GameObject boardGO;
 
     // A table of 6 boards
-    Board[] boards;
-
-
-    void Start () {
-        InitializeBoards();
-	}
+    public Board[] boards;
 
 
     /// <summary>
     /// Initializes the 6 boards (matrices and squares game objects).
     /// </summary>
-    private void InitializeBoards()
+    public void Initialize()
     {
-        GameObject cubeBoard = (GameObject)GameObject.Instantiate(boardGO, new Vector3(0, 0, 0), new Quaternion());
+        GameObject cubeBoard = (GameObject) GameObject.Instantiate(boardGO, new Vector3(0, 0, 0), new Quaternion());
 
         // Initialization of data model : boards
         boards = new Board[6];
