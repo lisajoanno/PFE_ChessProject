@@ -18,6 +18,7 @@ public class PawnsInitializer : MonoBehaviour {
         }
     }
 
+    // To get the tab of boards
     private Board[] getBoards()
     {
         return GameObject.FindGameObjectWithTag("BoardInitializer").GetComponent<BoardInitializer>().boards;
@@ -25,6 +26,8 @@ public class PawnsInitializer : MonoBehaviour {
 
     // Use this for initialization
     public void Initialize() {
+        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(5, 5));
+        PlacePawn(goTest);
         goTest.GetComponent<Pawn>().Position = new Position(getBoards()[1], new Vector2(3, 2));
         PlacePawn(goTest);
         goTest.GetComponent<Pawn>().Position = new Position(getBoards()[2], new Vector2(1, 3));
@@ -32,6 +35,8 @@ public class PawnsInitializer : MonoBehaviour {
         goTest.GetComponent<Pawn>().Position = new Position(getBoards()[3], new Vector2(4, 2));
         PlacePawn(goTest);
         goTest.GetComponent<Pawn>().Position = new Position(getBoards()[4], new Vector2(0, 7));
+        PlacePawn(goTest);
+        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[5], new Vector2(6, 2));
         PlacePawn(goTest);
     }
 
