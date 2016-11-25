@@ -49,7 +49,7 @@ public class Select
     }
 
     private GameObject lastSelected;        //the last game object we selected
-    private Color colorLastSelected;        //the initial color of the object we selected
+    protected Color colorLastSelected;        //the initial color of the object we selected
     public GameObject LastSelected
     {
         get
@@ -110,10 +110,10 @@ public class Select
     protected virtual void ResetColor()
     {
         //we put back the original color of the previously selected game object
-        Renderer[] tabChildren = lastSelected.GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in tabChildren)
+        Renderer rend = lastSelected.GetComponent<Renderer>();
+        //foreach (Renderer r in tabChildren)
         {
-            r.material.color = colorLastSelected;
+            rend.material.color = colorLastSelected;
         }
     }
 
@@ -146,10 +146,10 @@ public class Select
     protected virtual void ColorNewlySelectedGameObject()
     {
         //set the color of the game object to the specified select color
-        Renderer[] tabChildren = lastSelected.GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in tabChildren)
+        Renderer rend = lastSelected.GetComponent<Renderer>();
+        //foreach (Renderer r in tabChildren)
         {
-            r.material.color = selectColor;
+            rend.material.color = selectColor;
         }
     }
 }

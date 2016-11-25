@@ -30,10 +30,17 @@ public class SelectPawn : Select
 
     protected override void ColorNewlySelectedGameObject()
     {
-        base.ColorNewlySelectedGameObject();
+        //base.ColorNewlySelectedGameObject();
+
+        //set the color of the game object to the specified select color
+        Renderer[] tabChildren = LastSelected.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in tabChildren)
+        {
+            r.material.color = SelectColor;
+        }
 
         //put a special color on the squares you can move
-        Pawn pawn = LastSelected.GetComponent<Pawn>();
+        //Pawn pawn = LastSelected.GetComponent<Pawn>();
         /*foreach (Position pos in pawn.MoveCases)
         {
             pos.board.GetSquare(pos.coo).GetComponent<Renderer>().material.color = possibleSquaresColor;
@@ -43,7 +50,15 @@ public class SelectPawn : Select
 
     protected override void ResetColor()
     {
-        base.ResetColor();
+        //base.ResetColor();
+
+        //we put back the original color of the previously selected game object
+        Renderer[] tabChildren = LastSelected.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in tabChildren)
+        {
+            r.material.color = colorLastSelected;
+        }
+
         Pawn pawn = LastSelected.GetComponent<Pawn>();
 
         Position pos = pawn.Position;

@@ -18,7 +18,7 @@ public class Pawn : ChessElement {
             // If the team is 0, the color is white
             // If the team is 1, it's the adverse team so the color is black
             Color colorTeam = (team == 0) ? Color.white : Color.black;
-            
+
             // all renderers need to change color
             Renderer[] tabChildren = gameObject.GetComponentsInChildren<Renderer>();
             foreach (Renderer r in tabChildren)
