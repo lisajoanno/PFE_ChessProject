@@ -26,35 +26,26 @@ public class PawnsInitializer : MonoBehaviour {
 
     // Use this for initialization
     public void Initialize() {
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(1, 1));
+        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(1, 0));
         GameObject hehe = PlacePawn(goTest);
         hehe.GetComponent<Pawn>().Team = 0;
-        hehe.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(1, 1));
+        hehe.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(1, 0));
 
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(6, 6));
+        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(0, 1));
         GameObject hoho = PlacePawn(goTest);
-        hoho.GetComponent<Pawn>().Team = 1;
-        hoho.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(6, 6));
+        hoho.GetComponent<Pawn>().Team = 0;
+        hoho.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(0, 1));
 
-        /**
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(7, 7));
-        goTest.GetComponent<Pawn>().Team = 0;
-        PlacePawn(goTest);
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(3, 2));
-        goTest.GetComponent<Pawn>().Team = 0;
-        PlacePawn(goTest);
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[2], new Vector2(1, 3));
-        goTest.GetComponent<Pawn>().Team = 0;
-        PlacePawn(goTest);
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[3], new Vector2(4, 2));
-        goTest.GetComponent<Pawn>().Team = 1;
-        PlacePawn(goTest);
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(0, 7));
-        goTest.GetComponent<Pawn>().Team = 1;
-        PlacePawn(goTest);
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(6, 2));
-        goTest.GetComponent<Pawn>().Team = 1;
-        PlacePawn(goTest);**/
+        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(7, 6));
+        GameObject hihi = PlacePawn(goTest);
+        hihi.GetComponent<Pawn>().Team = 1;
+        hihi.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(7, 6));
+
+        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(6, 7));
+        GameObject haha = PlacePawn(goTest);
+        haha.GetComponent<Pawn>().Team = 1;
+        haha.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(6, 7));
+
     }
 
     /// <summary>

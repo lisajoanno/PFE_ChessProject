@@ -21,8 +21,8 @@ public class SelectController : MonoBehaviour
     private Color selectColor;              //the color that gameobject will have when selected
     [SerializeField]
     private Color possibleSquaresColor;     //the color of the squares you can select after choosing a pawn
-    //private BoardMovement move;             //the component that permits to make movement
-    //private TeamTurn teamTurn;
+
+    private MoveController moveCtrl;        //the component that permits to make movement
 
     /// <summary>
     ///     Initialize the controller of the selection
@@ -30,10 +30,11 @@ public class SelectController : MonoBehaviour
     void Awake()
     {
         select = new Select[2];
-        //move = GetComponent<BoardMovement>();
-        //teamTurn = GetComponent<TeamTurn>();
+        
+        // Search for the components in parent (GamePlay)
+        moveCtrl = GetComponentInParent<MoveController>();
 
-        select[0] = new SelectPawn(selectColor, whatFirstCanSelect/*, teamTurn*/);
+        select[0] = new SelectPawn(selectColor, whatFirstCanSelect);
         select[1] = new Select(selectColor, whatSecondCanSelect);
     }
 
@@ -75,7 +76,7 @@ public class SelectController : MonoBehaviour
                     Square square = select[1].LastSelected.GetComponent<Square>();
                     //do the move; eat the pawn at the selected square if needed
                     
-                    if (GetComponentInParent<MoveController>().Move(pawn, square))
+                    if (moveCtrl.Move(pawn, square))
                     {
                         //we notify to all the observers that a move has been done
                         //NotifyAll();

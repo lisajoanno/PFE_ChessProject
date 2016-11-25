@@ -5,11 +5,13 @@
 /// </summary>
 public class SelectPawn : Select
 {
-    //private TeamTurn teamTurn;
 
-    public SelectPawn(Color color, LayerMask mask/*, TeamTurn teamTurn*/) : base(color, mask)
+    //the component managing the teams
+    private TeamTurn teamTurn;
+
+    public SelectPawn(Color color, LayerMask mask) : base(color, mask)
     {
-        //this.teamTurn = teamTurn;
+        teamTurn = GameObject.FindGameObjectWithTag("GamePlay").GetComponent<TeamTurn>();
     }
 
 
@@ -17,9 +19,11 @@ public class SelectPawn : Select
     {
         if (base.CanSelect(newSelected))
         {
-            Pawn pElem = newSelected.GetComponent<Pawn>();
-            return true;
-            //return pElem.GetTeam == teamTurn.GetTeamTurn;
+            Pawn pawn = newSelected.GetComponent<Pawn>();
+            //return true;
+
+            // The pawn's team needs to be the current team playing
+            return (pawn.Team == teamTurn.CurrentTeamPlaying);
         }
         return false;
     }
