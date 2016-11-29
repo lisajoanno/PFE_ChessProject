@@ -25,6 +25,9 @@ public class MoveController : MonoBehaviour {
         // Light check that the pawn is on the right team
         if (pawn.Team != teamTurn.CurrentTeamPlaying) Debug.Log("Warning : the pawn you're moving is not of the right team.");
 
+        // Check that the movement is possible for a given pawn
+        if (!pawn.PossibleMoveCases.Contains(square.Position)) return false;
+
         // Is there a pawn on the square ? 
         Pawn pawnOnBoard = square.GetComponentInChildren<Pawn>();
 

@@ -123,6 +123,7 @@ public class Pawn : ChessElement {
                         convert = (int[,])tmpMatrix.Clone();
                     }
 
+                    // If there is a pawn on the next square, it stops the movement, so canContinue = false
                     Pawn p = current.board.GetSquare(current.coo).gameObject.GetComponentInChildren<Pawn>();
                     if (p != null) canContinue = false;
                     
