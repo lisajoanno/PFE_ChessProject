@@ -29,10 +29,8 @@ public class SelectPawn : Select
         return false;
     }
 
-    protected override void ColorNewlySelectedGameObject()
+    public override void ColorNewlySelectedGameObject()
     {
-        //base.ColorNewlySelectedGameObject();
-
         //set the color of the game object to the specified select color
         Renderer[] tabChildren = LastSelected.GetComponentsInChildren<Renderer>();
         foreach (Renderer r in tabChildren)

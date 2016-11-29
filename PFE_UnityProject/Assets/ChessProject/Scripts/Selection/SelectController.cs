@@ -47,21 +47,32 @@ public class SelectController : MonoBehaviour
         //Fire1 is the button for selecting
         if (Input.GetButtonDown("Fire1"))
         {
-            
+            DetectRay();
+            /**
             bool aSelectionHasBeenDone = select[0].LaunchSelect(Input.mousePosition);
+
 
             //we need to have the first select activated to select a second gameobject
             //and we need to have selected a gameobject before this frame
             if (select[0].HasSthSelected && !aSelectionHasBeenDone)
             {
+                bool squareAlreadySelected = select[1].HasSthSelected;
+                //=> on doit recolorier les cases possibles
+                //launch select
                 select[1].LaunchSelect(Input.mousePosition);
+
+                if (squareAlreadySelected)
+                {
+                    select[0].ColorNewlySelectedGameObject();
+                    select[1].ColorNewlySelectedGameObject();
+                }
             }
             //we remove the selection of the second gameobject if the first is unselected and
             //if a second gameobject has been selected
             else if (select[1].HasSthSelected)
             {
                 select[1].RemoveSelection();
-            }
+            }**/
         }
 
         //Submit is the button for the validation of our movement
@@ -83,11 +94,34 @@ public class SelectController : MonoBehaviour
                         //we notify to all the observers that a move has been done
                         //NotifyAll();
                     }
-                    
                 }
             }
         }
     }
+
+
+    private void DetectRay()
+    {
+        //create a ray from the specified position
+        Ray rayToSelect = Camera.main.ScreenPointToRay(Input.mousePosition); 
+        RaycastHit hit = new RaycastHit();
+        //if the ray hit an object with a layer we can select
+        if (Physics.Raycast(rayToSelect, out hit, float.MaxValue, whatFirstCanSelect | whatSecondCanSelect))
+        {
+            GameObject newSelected = hit.transform.gameObject;
+            // The selected GO contains the 'whatFirstCanSelect' layer
+            if (((2 << (newSelected.layer-1)) & whatFirstCanSelect) == whatFirstCanSelect)
+            {
+                select[0].LaunchSelect(newSelected);
+            }
+            // The selected GO contains the 'whatSecondCanSelect' layer
+            else if (((2 << (newSelected.layer - 1)) & whatSecondCanSelect) == whatSecondCanSelect)
+            {
+                if (select[0].HasSthSelected) select[1].LaunchSelect(newSelected);
+            }
+        }
+    }
+
 
     /// <summary>
     /// Reset all selection we could have done

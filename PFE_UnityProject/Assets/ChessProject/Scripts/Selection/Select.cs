@@ -62,32 +62,24 @@ public class Select
     /// </summary>
     /// <param name="position">the position from where the raycast will begin</param>
     /// <returns>true if it selects something, false otherwise</returns>
-    public bool LaunchSelect(Vector3 position)
+    public bool LaunchSelect(GameObject newSelected)
     {
-        Ray rayToSelect = Camera.main.ScreenPointToRay(position);                           //create a ray from the specified position
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(rayToSelect, out hit, float.MaxValue, whatYouCanSelect))    //if the ray hit an object with a layer we can select
+        if (CanSelect(newSelected))
         {
-            GameObject newSelected = hit.transform.gameObject;
-
-            if (CanSelect(newSelected))
+            //reset the previously put color because we have selected another gameobject
+            if (hasSthSelected)
             {
-                //reset the previously put color because we have selected another gameobject
-                if (hasSthSelected)
-                {
-                    ResetColor();
-                }
-                SelectGameObject(newSelected);
-                return true;
+                ResetColor();
             }
+            SelectGameObject(newSelected);
+            return true;
+        }
 
-            //we clicked on the same gameobject so we unselect it
-            if (hasSthSelected && newSelected == lastSelected)
-            {
-                RemoveSelection();
-                return true;
-            }
-            return false;
+        //we clicked on the same gameobject so we unselect it
+        if (hasSthSelected && newSelected == lastSelected)
+        {
+            RemoveSelection();
+            return true;
         }
         return false;
     }
@@ -107,6 +99,7 @@ public class Select
     /// </summary>
     protected virtual void ResetColor()
     {
+        
         //we put back the original color of the previously selected game object
         Renderer rend = lastSelected.GetComponent<Renderer>();
         //foreach (Renderer r in tabChildren)
@@ -114,6 +107,8 @@ public class Select
             rend.material.color = lastSelected.GetComponent<Square>().Color;
         }
     }
+
+
 
     /// <summary>
     ///     Do the selection on the newSelected object
@@ -134,13 +129,14 @@ public class Select
     {
         //save the new selected object
         lastSelected = newSelected;
+        Debug.Log(" dans select game object");
 
         ColorNewlySelectedGameObject();
 
         hasSthSelected = true;
     }
 
-    protected virtual void ColorNewlySelectedGameObject()
+    public virtual void ColorNewlySelectedGameObject()
     {
         //set the color of the game object to the specified select color
         Renderer rend = lastSelected.GetComponent<Renderer>();
