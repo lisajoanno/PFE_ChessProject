@@ -123,13 +123,9 @@ public class Pawn : ChessElement {
                         convert = (int[,])tmpMatrix.Clone();
                     }
 
-                    //if (pp != null)
-                    {
-                        //if ((pp.IsThereAPawn(current)) && !canJump)
-                        { // if the pawn can't jump, then we don't go further in this position
-                            canContinue = false;
-                        }
-                    }
+                    Pawn p = current.board.GetSquare(current.coo).gameObject.GetComponentInChildren<Pawn>();
+                    if (p != null) canContinue = false;
+                    
                 }
             }
         }
