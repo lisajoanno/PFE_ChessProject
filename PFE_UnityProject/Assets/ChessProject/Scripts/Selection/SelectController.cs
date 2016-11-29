@@ -109,6 +109,7 @@ public class SelectController : MonoBehaviour
         if (Physics.Raycast(rayToSelect, out hit, float.MaxValue, whatFirstCanSelect | whatSecondCanSelect))
         {
             GameObject newSelected = hit.transform.gameObject;
+            ResetAllColorModel();
             // The selected GO contains the 'whatFirstCanSelect' layer
             if (((2 << (newSelected.layer-1)) & whatFirstCanSelect) == whatFirstCanSelect)
             {
@@ -119,8 +120,38 @@ public class SelectController : MonoBehaviour
             {
                 if (select[0].HasSthSelected) select[1].LaunchSelect(newSelected);
             }
+            RecolorAllModel();
         }
     }
+
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ResetAllColorModel()
+    {
+        foreach (Select s in select)
+        {
+            s.ResetColorModel();
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void RecolorAllModel()
+    {
+        foreach (Select s in select)
+        {
+            if (s.HasSthSelected) s.RecolorModel();
+        }
+    }
+
+
+
+
+
 
 
     /// <summary>
@@ -128,9 +159,14 @@ public class SelectController : MonoBehaviour
     /// </summary>
     public void ResetAllSelection()
     {
+        ResetAllColorModel();
         if (select[0].HasSthSelected)
+        {
             select[0].RemoveSelection();
+        }
         if (select[1].HasSthSelected)
+        {
             select[1].RemoveSelection();
+        }
     }
 }

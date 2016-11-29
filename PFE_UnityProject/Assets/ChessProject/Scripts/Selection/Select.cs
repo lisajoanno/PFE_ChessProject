@@ -57,31 +57,55 @@ public class Select
         }
     }
 
+
+    
+
+
     /// <summary>
     ///     Launch the selection of an object
     /// </summary>
     /// <param name="position">the position from where the raycast will begin</param>
     /// <returns>true if it selects something, false otherwise</returns>
-    public bool LaunchSelect(GameObject newSelected)
+    public void LaunchSelect(GameObject newSelected)
     {
         if (CanSelect(newSelected))
         {
-            //reset the previously put color because we have selected another gameobject
-            if (hasSthSelected)
-            {
-                ResetColor();
-            }
+            // we set the game object as the selected game object
             SelectGameObject(newSelected);
-            return true;
         }
-
         //we clicked on the same gameobject so we unselect it
-        if (hasSthSelected && newSelected == lastSelected)
+        else
         {
             RemoveSelection();
-            return true;
         }
-        return false;
+    }
+
+
+    /// <summary>
+    /// Recolors all component of the model : all the children renderers colors are set as the select color.
+    /// </summary>
+    public virtual void RecolorModel()
+    {
+        if (!LastSelected) return;
+
+        //set the color of the game object to the specified select color
+        Renderer rend = lastSelected.GetComponent<Renderer>();
+        //foreach (Renderer r in tabChildren)
+        {
+            rend.material.color = selectColor;
+        }
+    }
+
+    
+    /// <summary>
+    /// Resets all the components as their original color.
+    /// </summary>
+    public virtual void ResetColorModel()
+    {
+        if (!LastSelected) return;
+
+        ChessElement ce = lastSelected.GetComponent<ChessElement>();
+        ce.ResetChessElementColor();
     }
 
     /// <summary>
@@ -89,26 +113,10 @@ public class Select
     /// </summary>
     public void RemoveSelection()
     {
-        ResetColor();
         lastSelected = null;
         hasSthSelected = false;
     }
-
-    /// <summary>
-    ///     Revert the color of the last selected object into its original one
-    /// </summary>
-    protected virtual void ResetColor()
-    {
-        
-        //we put back the original color of the previously selected game object
-        Renderer rend = lastSelected.GetComponent<Renderer>();
-        //foreach (Renderer r in tabChildren)
-        {
-            rend.material.color = lastSelected.GetComponent<Square>().Color;
-        }
-    }
-
-
+    
 
     /// <summary>
     ///     Do the selection on the newSelected object
@@ -121,6 +129,7 @@ public class Select
         return !hasSthSelected || lastSelected != newSelected;
     }
 
+
     /// <summary>
     ///     Put the color on the gameobject to explicite that it is selected
     /// </summary>
@@ -129,20 +138,6 @@ public class Select
     {
         //save the new selected object
         lastSelected = newSelected;
-        Debug.Log(" dans select game object");
-
-        ColorNewlySelectedGameObject();
-
         hasSthSelected = true;
-    }
-
-    public virtual void ColorNewlySelectedGameObject()
-    {
-        //set the color of the game object to the specified select color
-        Renderer rend = lastSelected.GetComponent<Renderer>();
-        //foreach (Renderer r in tabChildren)
-        {
-            rend.material.color = selectColor;
-        }
     }
 }

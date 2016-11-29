@@ -33,4 +33,16 @@ public class ChessElement : MonoBehaviour {
         }
     }
 
+    public void ResetChessElementColor()
+    {
+        // all renderers need to change color
+        Renderer[] tabChildren = gameObject.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in tabChildren)
+        {
+            //if (r.gameObject.tag.Equals("Square"))
+                r.material.color = Color;
+        }
+        GetComponent<Renderer>().material.color = Color;
+    }
+
 }
