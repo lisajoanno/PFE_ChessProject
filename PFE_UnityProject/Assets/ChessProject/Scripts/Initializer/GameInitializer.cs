@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class GameInitializer : MonoBehaviour {
@@ -10,3 +11,4 @@ public class GameInitializer : MonoBehaviour {
     }
 
 }
+

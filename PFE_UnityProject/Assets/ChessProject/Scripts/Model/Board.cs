@@ -121,29 +121,29 @@ public class Board {
 
 		Vector2 newMovement = new Vector2(movement.x, movement.y);
 		//depassement droite
-		if (carry.x > columns)
+		if (carry.x >= columns)
 		{
 			passing = true;
 			dir = Direction.RIGHT;
-			newMovement.x -= (columns - coo.x)+1;
+			newMovement.x -= (columns - coo.x);
 		}
-		else if(carry.x <= 0)
+		else if(carry.x < 0)
 		{
 			passing = true;
 			dir = Direction.LEFT;
-			newMovement.x += coo.x;
+			newMovement.x += coo.x - 1;
 		}
-		else if(carry.y > rows)
+		else if(carry.y >= rows)
 		{
 			passing = true;
 			dir = Direction.UP;
-			newMovement.y -= (rows - coo.y) + 1;
+			newMovement.y -= (rows - coo.y);
 		}
-		else if(carry.y <= 0)
+		else if(carry.y < 0)
 		{
 			passing = true;
 			dir = Direction.DOWN;
-			newMovement.y += coo.y;
+			newMovement.y += coo.y - 1;
 		}
 		else
 		{
@@ -158,7 +158,7 @@ public class Board {
 			int moveX = (int)(newMovement.x * pass.convertMatrix[0, 0] + newMovement.y * pass.convertMatrix[1, 0]);
 			int moveY = (int)(newMovement.x * pass.convertMatrix[0, 1] + newMovement.y * pass.convertMatrix[1, 1]);
 			Vector2 newMove = new Vector2(moveX, moveY);
-			convertMatrices.Add(pass.convertMatrix);
+            convertMatrices.Add(pass.convertMatrix);
 
 			p = newBoard.GetPositionFromTo(newPos, newMove, ref convertMatrices);
 		}

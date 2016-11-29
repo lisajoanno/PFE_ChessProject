@@ -6,22 +6,9 @@ using System.Collections;
 /// </summary>
 public class Square : ChessElement
 {
-    // The color
-    private Color color = new Color();
-    public Color Color
-    {
-        get
-        {
-            return color;
-        }
-        set
-        {
-            this.color = value;
-        }
-    }
-
     // Use this for initialization
-    void Start () {
-        this.color = GetComponent<Renderer>().material.color;
+    void Start()
+    {
+        Color = GetComponent<Renderer>().material.color;
     }
 }

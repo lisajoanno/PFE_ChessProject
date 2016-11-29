@@ -34,7 +34,7 @@ public class SelectController : MonoBehaviour
         // Search for the components in parent (GamePlay)
         moveCtrl = GetComponentInParent<MoveController>();
 
-        select[0] = new SelectPawn(selectColor, whatFirstCanSelect);
+        select[0] = new SelectPawn(selectColor, possibleSquaresColor, whatFirstCanSelect);
         select[1] = new Select(selectColor, whatSecondCanSelect);
     }
 
@@ -76,12 +76,14 @@ public class SelectController : MonoBehaviour
                     Square square = select[1].LastSelected.GetComponent<Square>();
                     //do the move; eat the pawn at the selected square if needed
                     
+                    ResetAllSelection();
+
                     if (moveCtrl.Move(pawn, square))
                     {
                         //we notify to all the observers that a move has been done
                         //NotifyAll();
                     }
-                    ResetAllSelection();
+                    
                 }
             }
         }

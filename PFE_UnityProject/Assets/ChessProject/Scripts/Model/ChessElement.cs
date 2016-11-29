@@ -18,4 +18,19 @@ public class ChessElement : MonoBehaviour {
             position = value;
         }
     }
+
+    // The color
+    private Color color;
+    public Color Color
+    {
+        get
+        {
+            return color;
+        }
+        set
+        {
+            this.color = value;
+        }
+    }
+
 }

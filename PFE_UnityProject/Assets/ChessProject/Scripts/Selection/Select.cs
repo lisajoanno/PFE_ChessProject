@@ -49,7 +49,6 @@ public class Select
     }
 
     private GameObject lastSelected;        //the last game object we selected
-    protected Color colorLastSelected;        //the initial color of the object we selected
     public GameObject LastSelected
     {
         get
@@ -100,7 +99,6 @@ public class Select
     {
         ResetColor();
         lastSelected = null;
-        colorLastSelected = Color.clear;
         hasSthSelected = false;
     }
 
@@ -113,7 +111,7 @@ public class Select
         Renderer rend = lastSelected.GetComponent<Renderer>();
         //foreach (Renderer r in tabChildren)
         {
-            rend.material.color = colorLastSelected;
+            rend.material.color = lastSelected.GetComponent<Square>().Color;
         }
     }
 
@@ -136,7 +134,6 @@ public class Select
     {
         //save the new selected object
         lastSelected = newSelected;
-        colorLastSelected = lastSelected.GetComponentsInChildren<Renderer>()[0].material.color;
 
         ColorNewlySelectedGameObject();
 

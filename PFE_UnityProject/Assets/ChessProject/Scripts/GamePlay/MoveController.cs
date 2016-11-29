@@ -21,7 +21,7 @@ public class MoveController : MonoBehaviour {
     /// <param name="square">the square where to move it</param>
     /// <returns>true if the move was successful, false if not</returns>
     public bool Move(Pawn pawn, Square square)
-    {        
+    {
         // Light check that the pawn is on the right team
         if (pawn.Team != teamTurn.CurrentTeamPlaying) Debug.Log("Warning : the pawn you're moving is not of the right team.");
 
@@ -38,9 +38,9 @@ public class MoveController : MonoBehaviour {
         MakeMove(pawn, square);
         // The pawn was moved : the team can change
         teamTurn.ChangeTeam();
+
+
         return true;
-        
-        
     }
 
     /// <summary>
@@ -73,6 +73,9 @@ public class MoveController : MonoBehaviour {
         // The pawn needs to be on the case
         pawn.gameObject.transform.position += (pawn.gameObject.transform.up) * 3;
         pawn.gameObject.transform.SetParent(board.GetSquare(pos).gameObject.transform);
+
+        // We update the selectable cases of the pawn just moved
+        pawn.UpdateSelectableCases();
     }
 }
  
