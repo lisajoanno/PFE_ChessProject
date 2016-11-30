@@ -67,8 +67,15 @@ public class Pawn : ChessElement {
 
     void Start()
     {
-        Move mv = new Move(new Vector2(1,1), true, 4);
+        Move mv = new Move(new Vector2(1,1), true, 10);
         moveCasesIn.Add(mv);
+        mv = new Move(new Vector2(-1, -1), true, 10);
+        moveCasesIn.Add(mv);
+        mv = new Move(new Vector2(1, -1), true, 10);
+        moveCasesIn.Add(mv);
+        mv = new Move(new Vector2(-1, 1), true, 10);
+        moveCasesIn.Add(mv);
+        
         UpdateSelectableCases();
         //Debug.Log(gameObject.name + "  "+((Position) PossibleMoveCases[0]).coo);
     }
@@ -110,7 +117,7 @@ public class Pawn : ChessElement {
 
                     //prepare the list of matrices
                     convertMatrices = new List<int[,]>();
-                    current = current.board.GetPositionFromTo(current.coo, newMove);
+                    current = current.board.GetPositionFromTo(current.coo, newMove, ref convertMatrices);
                     possibleMoveCases.Add(current);
 
                     //rebuild the convert matrix for the next movement

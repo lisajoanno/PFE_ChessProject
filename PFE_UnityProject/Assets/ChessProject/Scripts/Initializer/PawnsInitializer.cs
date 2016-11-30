@@ -38,19 +38,19 @@ public class PawnsInitializer : MonoBehaviour {
         hoho.gameObject.name = "pawn hoho";
         hoho.GetComponent<Pawn>().Team = 0;
         hoho.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(0, 1));
-
+        
         goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(7, 6));
         GameObject hihi = PlacePawn(goTest);
         hihi.gameObject.name = "pawn hihi";
         hihi.GetComponent<Pawn>().Team = 1;
         hihi.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(7, 6));
-
+        
         goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(6, 7));
         GameObject haha = PlacePawn(goTest);
         haha.gameObject.name = "pawn haha";
         haha.GetComponent<Pawn>().Team = 1;
         haha.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(6, 7));
-
+        
     }
 
     /// <summary>

@@ -123,19 +123,19 @@ public class BoardInitializer : MonoBehaviour {
 
         Passing right_up = new Passing();
         right_up.convertMatrix = new int[2, 2] { { 0, -1 },
-                                                 { 1, 0 } };
+                                                 { 1, 0  } };
         right_up.newBeginning = (Vector2 coo, int rows, int columns) => { return new Vector2(coo.y, columns - 1); };
         boards[1].AddBoard(Direction.RIGHT, boards[5], right_up);
 
         Passing up_right = new Passing();
         up_right.convertMatrix = new int[2, 2] { { 0, 1 },
-                                                 {-1, 0 } };
+                                                 { -1, 0  } };
         up_right.newBeginning = (Vector2 coo, int rows, int columns) => { return new Vector2(rows - 1, coo.x); };
         boards[5].AddBoard(Direction.UP, boards[1], up_right);
 
         Passing left_down = new Passing();
         left_down.convertMatrix = new int[2, 2] { { 0, -1 },
-                                                  { 1, 0 } };
+                                                  { 1, 0  } };
         left_down.newBeginning = (Vector2 coo, int rows, int columns) => { return new Vector2(coo.y, 0); };
         boards[2].AddBoard(Direction.LEFT, boards[4], left_down);
 

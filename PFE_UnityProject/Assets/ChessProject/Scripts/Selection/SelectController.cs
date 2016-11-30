@@ -47,32 +47,8 @@ public class SelectController : MonoBehaviour
         //Fire1 is the button for selecting
         if (Input.GetButtonDown("Fire1"))
         {
+            // The player tries to select a pawn or a square.
             DetectRay();
-            /**
-            bool aSelectionHasBeenDone = select[0].LaunchSelect(Input.mousePosition);
-
-
-            //we need to have the first select activated to select a second gameobject
-            //and we need to have selected a gameobject before this frame
-            if (select[0].HasSthSelected && !aSelectionHasBeenDone)
-            {
-                bool squareAlreadySelected = select[1].HasSthSelected;
-                //=> on doit recolorier les cases possibles
-                //launch select
-                select[1].LaunchSelect(Input.mousePosition);
-
-                if (squareAlreadySelected)
-                {
-                    select[0].ColorNewlySelectedGameObject();
-                    select[1].ColorNewlySelectedGameObject();
-                }
-            }
-            //we remove the selection of the second gameobject if the first is unselected and
-            //if a second gameobject has been selected
-            else if (select[1].HasSthSelected)
-            {
-                select[1].RemoveSelection();
-            }**/
         }
 
         //Submit is the button for the validation of our movement
@@ -89,17 +65,16 @@ public class SelectController : MonoBehaviour
                     
                     ResetAllSelection();
 
-                    if (moveCtrl.Move(pawn, square))
-                    {
-                        //we notify to all the observers that a move has been done
-                        //NotifyAll();
-                    }
+                    moveCtrl.Move(pawn, square);
                 }
             }
         }
     }
 
 
+    /// <summary>
+    /// Finds the game object the player clicked on. If it's of the right layer, it lauches the selection.
+    /// </summary>
     private void DetectRay()
     {
         //create a ray from the specified position
@@ -127,7 +102,7 @@ public class SelectController : MonoBehaviour
 
 
     /// <summary>
-    /// 
+    /// Resets all colors of all Select.
     /// </summary>
     private void ResetAllColorModel()
     {
@@ -138,7 +113,7 @@ public class SelectController : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Recolors are Select.
     /// </summary>
     private void RecolorAllModel()
     {
