@@ -118,7 +118,12 @@ public class Pawn : ChessElement {
                     //prepare the list of matrices
                     convertMatrices = new List<int[,]>();
                     current = current.board.GetPositionFromTo(current.coo, newMove, ref convertMatrices);
-                    possibleMoveCases.Add(current);
+
+                    // If there is a pawn on the next square, it stops the movement, so canContinue = false
+                    Pawn p = current.board.GetSquare(current.coo).gameObject.GetComponentInChildren<Pawn>();
+                    if (p != null) canContinue = false;
+
+                    if (p == null || (p.Team != Team)) possibleMoveCases.Add(current);
 
                     //rebuild the convert matrix for the next movement
                     foreach (int[,] convertMatrix in convertMatrices)
@@ -130,9 +135,7 @@ public class Pawn : ChessElement {
                         convert = (int[,])tmpMatrix.Clone();
                     }
 
-                    // If there is a pawn on the next square, it stops the movement, so canContinue = false
-                    Pawn p = current.board.GetSquare(current.coo).gameObject.GetComponentInChildren<Pawn>();
-                    if (p != null) canContinue = false;
+
                     
                 }
             }
