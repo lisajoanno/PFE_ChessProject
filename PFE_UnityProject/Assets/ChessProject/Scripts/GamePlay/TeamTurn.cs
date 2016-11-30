@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TeamTurn : MonoBehaviour {
 
@@ -13,6 +14,14 @@ public class TeamTurn : MonoBehaviour {
         {
             allBoards = value;
         }
+    }
+
+    [SerializeField]
+    private Text teamTurnText;
+
+    void Start()
+    {
+        UpdateText();
     }
 
     // the current team playing
@@ -39,8 +48,15 @@ public class TeamTurn : MonoBehaviour {
             Debug.Log("The current team playing is neither 0 or 1 ?");
         }
 
+        UpdateText();
+
         // update of selectable cases of all pawns
         UpdateAllSelectableCases();
+    }
+
+    private void UpdateText()
+    {
+        teamTurnText.text = "A la team " + currentTeamPlaying + " de jouer !";
     }
 
     /// <summary>
