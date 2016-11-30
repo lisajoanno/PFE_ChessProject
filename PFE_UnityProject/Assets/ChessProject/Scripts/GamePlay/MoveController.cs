@@ -8,6 +8,7 @@ public class MoveController : MonoBehaviour {
 
     void Start()
     {
+        // Initialisation of the team turn component
         teamTurn = GetComponentInParent<TeamTurn>();
     }
 

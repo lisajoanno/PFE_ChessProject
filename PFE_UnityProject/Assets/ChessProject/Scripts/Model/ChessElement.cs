@@ -33,16 +33,18 @@ public class ChessElement : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Colors all pawn element to its original color (if it's a pawn : set at the beginning, depending on the team).
+    /// </summary>
     public void ResetChessElementColor()
     {
-        // all renderers need to change color
-        Renderer[] tabChildren = gameObject.GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in tabChildren)
-        {
-            //if (r.gameObject.tag.Equals("Square"))
-                r.material.color = Color;
-        }
-        GetComponent<Renderer>().material.color = Color;
+        SetChessElementColor(this.color);
     }
+
+    /// <summary>
+    /// Allows to change the color of the chess element (needs to be overrid by each type of chess element).
+    /// </summary>
+    /// <param name="newColor">the color to set to the material</param>
+    public virtual void SetChessElementColor(Color newColor) { }
 
 }

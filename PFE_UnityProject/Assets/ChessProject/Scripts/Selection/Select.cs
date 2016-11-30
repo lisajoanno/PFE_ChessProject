@@ -87,13 +87,7 @@ public class Select
     public virtual void RecolorModel()
     {
         if (!LastSelected) return;
-
-        //set the color of the game object to the specified select color
-        Renderer rend = lastSelected.GetComponent<Renderer>();
-        //foreach (Renderer r in tabChildren)
-        {
-            rend.material.color = selectColor;
-        }
+        lastSelected.gameObject.GetComponent<ChessElement>().SetChessElementColor(selectColor);
     }
 
     
