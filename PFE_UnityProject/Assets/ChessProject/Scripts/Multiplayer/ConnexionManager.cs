@@ -15,13 +15,14 @@ public class ConnexionManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log(Builder(0, 1, 2, 1, 3, 4));
+        //Debug.Log(Builder(0, 1, 2, 1, 3, 4));
 
         Connect();
-        StartCoroutine("Read");
+        
 
-        Write(Builder(0,1,2,1,3,4));
-        Write(Builder(0,3,4,1,5,6));
+        Write(Builder(1, 2, 2, 1, 4, 4));
+        StartCoroutine("Read");
+        Write(Builder(1, 3, 3, 1, 5, 5));
 
         //stream.Close();
         //client.Close();
@@ -43,7 +44,7 @@ public class ConnexionManager : MonoBehaviour
             Debug.Log("SocketException: " + e);
         }
 
-        Debug.Log("\nConnected plutot");
+        Debug.Log("\nConnected.");
     }
 
 
@@ -69,6 +70,7 @@ public class ConnexionManager : MonoBehaviour
 
     public void Write(String message)
     {
+        Debug.Log("je write");
         Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
         // Send the message to the connected TcpServer.
         stream.Write(data, 0, data.Length);
@@ -77,6 +79,7 @@ public class ConnexionManager : MonoBehaviour
 
     public IEnumerator Read()
     {
+        Debug.Log("je read");
         Byte[] bytes = new Byte[256];
         String data = null;
         int i;
@@ -87,9 +90,9 @@ public class ConnexionManager : MonoBehaviour
                 // Translate data bytes to a ASCII string.
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                 Debug.Log("Received: " + data);
-                yield return null;
+                yield return new WaitForSeconds(1);
             }
-            yield return null;
+            yield return new WaitForSeconds(3);
         }
     }
 }
