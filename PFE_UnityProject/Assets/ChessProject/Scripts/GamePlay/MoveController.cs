@@ -49,9 +49,18 @@ public class MoveController : MonoBehaviour {
         // ---------------------------------------
         Position oldPos = pawn.Position;
         Position newPos = square.Position;
-        //TODO 0 !!
-        connexionManager.MakeAMoveOnServer(0, (int)oldPos.coo.x, (int)oldPos.coo.y, 0, (int)newPos.coo.x, (int)newPos.coo.y);
+
+        int oldBoard = 0;
+        oldBoard = GetIntFromBoard(oldPos.board);
+        int newBoard = 0;
+        newBoard = GetIntFromBoard(newPos.board);
+
+        connexionManager.MakeAMoveOnServer(oldBoard, (int)oldPos.coo.x, (int)oldPos.coo.y, newBoard, (int)newPos.coo.x, (int)newPos.coo.y);
         
+
+
+
+
         // Real, physical move
         MakeMove(pawn, square);
         // The pawn was moved : the team can change
