@@ -46,31 +46,24 @@ public class Pawn : ChessElement {
             // If the team is 0, the color is white
             // If the team is 1, it's the adverse team so the color is black
             Color colorTeam = (team == 0) ? Color.white : Color.black;
-            Color = colorTeam;
-            ColorSquareOriginalColor();
-        }
-    }
-
-    /// <summary>
-    /// Colors all pawn element to its original color (set at the beginning, depending on the team).
-    /// </summary>
-    private void ColorSquareOriginalColor()
-    {
-        // all renderers need to change color
-        Renderer[] tabChildren = gameObject.GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in tabChildren)
-        {
-            r.material.color = Color;
+            this.Color = colorTeam;
+            ResetChessElementColor();
         }
     }
 
 
     void Start()
     {
-        Move mv = new Move(new Vector2(1,1), true, 4);
+        Move mv = new Move(new Vector2(1, 1), true, 10);
         moveCasesIn.Add(mv);
+        mv = new Move(new Vector2(-1, -1), true, 10);
+        moveCasesIn.Add(mv);
+        mv = new Move(new Vector2(1, -1), true, 10);
+        moveCasesIn.Add(mv);
+        mv = new Move(new Vector2(-1, 1), true, 10);
+        moveCasesIn.Add(mv);
+
         UpdateSelectableCases();
-        //Debug.Log(gameObject.name + "  "+((Position) PossibleMoveCases[0]).coo);
     }
 
 
@@ -110,8 +103,13 @@ public class Pawn : ChessElement {
 
                     //prepare the list of matrices
                     convertMatrices = new List<int[,]>();
-                    current = current.board.GetPositionFromTo(current.coo, newMove);
-                    possibleMoveCases.Add(current);
+                    current = current.board.GetPositionFromTo(current.coo, newMove, ref convertMatrices);
+
+                    // If there is a pawn on the next square, it stops the movement, so canContinue = false
+                    Pawn p = current.board.GetSquare(current.coo).gameObject.GetComponentInChildren<Pawn>();
+                    if (p != null) canContinue = false;
+
+                    if (p == null || (p.Team != Team)) possibleMoveCases.Add(current);
 
                     //rebuild the convert matrix for the next movement
                     foreach (int[,] convertMatrix in convertMatrices)
@@ -123,9 +121,7 @@ public class Pawn : ChessElement {
                         convert = (int[,])tmpMatrix.Clone();
                     }
 
-                    // If there is a pawn on the next square, it stops the movement, so canContinue = false
-                    Pawn p = current.board.GetSquare(current.coo).gameObject.GetComponentInChildren<Pawn>();
-                    if (p != null) canContinue = false;
+
                     
                 }
             }
@@ -153,6 +149,20 @@ public class Pawn : ChessElement {
             }
         }
         */
+    }
+
+    /// <summary>
+    /// Allows to change the color of the chess element (needs to be overrid by each type of chess element).
+    /// </summary>
+    /// <param name="newColor">the color to set to the material</param>
+    public override void SetChessElementColor(Color newColor)
+    {
+        Renderer[] tabChildren = gameObject.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in tabChildren)
+        {
+            r.material.color = newColor;
+        }
+        GetComponent<Renderer>().material.color = newColor;
     }
 
 }

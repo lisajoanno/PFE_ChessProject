@@ -111,9 +111,8 @@ public class Board {
 	/// <param name="coo">the start coordinate on this board</param>
 	/// <param name="movement">the movement you do</param>
 	/// <returns>The Position you reach after this movement</returns>
-	private Position GetPositionFromTo(Vector2 coo, Vector2 movement, ref IList<int[,]> convertMatrices)
+	public Position GetPositionFromTo(Vector2 coo, Vector2 movement, ref IList<int[,]> convertMatrices)
 	{
-
 		Position p = new Position();
 		Vector2 carry = coo+movement;
 		bool passing = false;
@@ -131,7 +130,7 @@ public class Board {
 		{
 			passing = true;
 			dir = Direction.LEFT;
-			newMovement.x += coo.x - 1;
+			newMovement.x += coo.x + 1;
 		}
 		else if(carry.y >= rows)
 		{
@@ -143,7 +142,7 @@ public class Board {
 		{
 			passing = true;
 			dir = Direction.DOWN;
-			newMovement.y += coo.y - 1;
+			newMovement.y += coo.y + 1;
 		}
 		else
 		{
@@ -160,7 +159,7 @@ public class Board {
 			Vector2 newMove = new Vector2(moveX, moveY);
             convertMatrices.Add(pass.convertMatrix);
 
-			p = newBoard.GetPositionFromTo(newPos, newMove, ref convertMatrices);
+            p = newBoard.GetPositionFromTo(newPos, newMove, ref convertMatrices);
 		}
 		return p;
 	}
