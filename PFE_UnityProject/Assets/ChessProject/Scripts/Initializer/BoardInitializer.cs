@@ -20,6 +20,7 @@ public class BoardInitializer : MonoBehaviour {
     public void Initialize()
     {
         GameObject cubeBoard = (GameObject) GameObject.Instantiate(boardGO, new Vector3(0, 0, 0), new Quaternion());
+        cubeBoard.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
 
         // Initialization of data model : boards
         boards = new Board[6];

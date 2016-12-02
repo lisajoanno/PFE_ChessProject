@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="RockyStones" size="540.000000 405.000000"/>
+        <ImageTarget name="RockyStonesCube.Right" size="540.000000 540.000000"/>
+        <ImageTarget name="RockyStonesCube.Left" size="540.000000 540.000000"/>
+        <ImageTarget name="RockyStonesCube.Front" size="540.000000 540.000000"/>
+        <ImageTarget name="RockyStonesCube.Top" size="540.000000 540.000000"/>
+        <ImageTarget name="RockyStonesCube.Back" size="540.000000 540.000000"/>
+        <ImageTarget name="RockyStonesCube.Bottom" size="540.000000 540.000000"/>
+        <MultiTarget name="RockyStonesCube">
+            <Part name="RockyStonesCube.Left" translation="-270.0 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="RockyStonesCube.Right" translation="270.0 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="RockyStonesCube.Front" translation="0 0 270.0" rotation="AD: 1 0 0 0"/>
+            <Part name="RockyStonesCube.Back" translation="0 0 -270.0" rotation="AD: 0 1 0 180"/>
+            <Part name="RockyStonesCube.Top" translation="0 270.0 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="RockyStonesCube.Bottom" translation="0 -270.0 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>
