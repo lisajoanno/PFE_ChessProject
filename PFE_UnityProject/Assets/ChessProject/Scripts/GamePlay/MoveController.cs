@@ -6,10 +6,14 @@ public class MoveController : MonoBehaviour {
     //the component managing the teams
     private TeamTurn teamTurn;
 
+    private ConnexionManager connexionManager;
+
     void Start()
     {
         // Initialisation of the team turn component
         teamTurn = GetComponentInParent<TeamTurn>();
+
+        connexionManager = GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>();
     }
 
     /// <summary>
@@ -42,6 +46,11 @@ public class MoveController : MonoBehaviour {
         MakeMove(pawn, square);
         // The pawn was moved : the team can change
         teamTurn.ChangeTeam();
+
+
+        // TODO 
+        connexionManager.MakeAMove();
+
 
 
         return true;

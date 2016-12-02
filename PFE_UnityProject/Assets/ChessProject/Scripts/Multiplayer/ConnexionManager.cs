@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Threading;
 using System.Net.Sockets;
 
 public class ConnexionManager : MonoBehaviour
@@ -19,10 +20,9 @@ public class ConnexionManager : MonoBehaviour
 
         Connect();
         
+        Write(Builder(0, 0, 0, 0, 0, 0));
+        StartCoroutine(Read());
 
-        Write(Builder(1, 2, 2, 1, 4, 4));
-        StartCoroutine("Read");
-        Write(Builder(1, 3, 3, 1, 5, 5));
 
         //stream.Close();
         //client.Close();
@@ -47,6 +47,10 @@ public class ConnexionManager : MonoBehaviour
         Debug.Log("\nConnected.");
     }
 
+    public void MakeAMove()
+    {
+        Write(Builder(1, 3, 3, 1, 5, 5));
+    }
 
     private String Builder(int faceOld, int xOld, int yOld, int faceNew, int xNew, int yNew)
     {
@@ -83,16 +87,19 @@ public class ConnexionManager : MonoBehaviour
         Byte[] bytes = new Byte[256];
         String data = null;
         int i;
-        for (;;)
+        //for (;;)
         {
+            
+
             while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
             {
+                
                 // Translate data bytes to a ASCII string.
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                 Debug.Log("Received: " + data);
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(4);
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
         }
     }
 }
