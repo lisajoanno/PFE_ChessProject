@@ -16,7 +16,7 @@ public class ConnexionManager : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    public void StartConnexion()
     {
         // Init of move controller via the scene
         moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
