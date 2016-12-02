@@ -49,7 +49,8 @@ public class MoveController : MonoBehaviour {
         // ---------------------------------------
         Position oldPos = pawn.Position;
         Position newPos = square.Position;
-        connexionManager.MakeAMove(0, (int)oldPos.coo.x, (int)oldPos.coo.y, 0, (int)newPos.coo.x, (int)newPos.coo.y);
+        //TODO 0 !!
+        connexionManager.MakeAMoveOnServer(0, (int)oldPos.coo.x, (int)oldPos.coo.y, 0, (int)newPos.coo.x, (int)newPos.coo.y);
         
         // Real, physical move
         MakeMove(pawn, square);
@@ -59,13 +60,20 @@ public class MoveController : MonoBehaviour {
         return true;
     }
 
-    public void MakeMoveFromOtherPlayer(Position[] positions)
+    private Board GetBoardObjectFromIndex(int index)
     {
-        Square newSquare = teamTurn.AllBoard[0].GetSquare(positions[1].coo).GetComponent<Square>();
-        Pawn oldPawn = teamTurn.AllBoard[0].GetSquare(positions[0].coo).GetComponent<Square>().GetComponentInChildren<Pawn>();
-
-        Move(oldPawn, newSquare);
+        return teamTurn.AllBoard[index];
     }
+
+    private int GetIntFromBoard(Board board)
+    {
+        for (int i = 0; i<teamTurn.AllBoard.Length; i++)
+        {
+            if (teamTurn.AllBoard[i] == board) return i;
+        }
+        return -1;
+    }
+
 
     /// <summary>
     /// Eats a pawn.
@@ -100,6 +108,70 @@ public class MoveController : MonoBehaviour {
 
         // We update the selectable cases of the pawn just moved
         pawn.UpdateSelectableCases();
+    }
+
+
+
+    /************     Multiplayer management     *************/
+
+    /// <summary>
+    /// Receives a move from the other player and actually moves the pawn.
+    /// First it need to parse the json on parameters.
+    /// </summary>
+    /// <param name="data">the json string to be parsed</param>
+    public void MakeMoveFromOtherPlayer(string data)
+    {
+        // Extracts the Position of the pawn to be moved and the square where to move it
+        // position[0] is the position of the pawn
+        // position[1] is the position of the square where to move the pawn
+        Position[] positions = TranslatePositions(data);
+        Board board1 = GetBoardObjectFromIndex(GetIntFromBoard(positions[1].board));
+        Square newSquare = board1.GetSquare(positions[1].coo).GetComponent<Square>();
+
+        Board board2 = GetBoardObjectFromIndex(GetIntFromBoard(positions[0].board));
+        Pawn oldPawn = board2.GetSquare(positions[0].coo).GetComponent<Square>().GetComponentInChildren<Pawn>();
+        
+        // Makes the move
+        Move(oldPawn, newSquare);
+    }
+
+    /// <summary>
+    /// A class used to parse the data received from the server.
+    /// It is serializable and an object is creatable from a json string.
+    /// </summary>
+    [System.Serializable]
+    public class DataReceived
+    {
+
+        public int face_old;
+        public int x_old;
+        public int y_old;
+        public int face_new;
+        public int x_new;
+        public int y_new;
+
+        public static DataReceived CreateFromJSON(string jsonString)
+        {
+            return JsonUtility.FromJson<DataReceived>(jsonString);
+        }
+    }
+
+    /// <summary>
+    /// From the data received from the server, creates 2 Position :
+    ///     - the first one is the original position (so the pawn)
+    ///     - the second one is the square where to move it.
+    /// </summary>
+    /// <param name="data">the JSON string (WARNING : string with lower s)</param>
+    /// <returns>a table of 2 positions</returns>
+    private Position[] TranslatePositions(string data)
+    {
+        DataReceived dataReceived = DataReceived.CreateFromJSON(data);
+        Position oldPos = new Position(GetBoardObjectFromIndex(dataReceived.face_old), new Vector2(dataReceived.x_old, dataReceived.y_old));
+        Position newPos = new Position(GetBoardObjectFromIndex(dataReceived.face_new), new Vector2(dataReceived.x_new, dataReceived.y_new));
+        Position[] positions = new Position[2];
+        positions[0] = oldPos;
+        positions[1] = newPos;
+        return positions;
     }
 }
  

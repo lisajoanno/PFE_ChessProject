@@ -8,14 +8,14 @@ public class GameInitializer : MonoBehaviour {
     void Start()
     {
         GetComponentInChildren<BoardInitializer>().Initialize();
-
-        Board[] boards = GetComponentInChildren<BoardInitializer>().boards;
-
-        GameObject.FindGameObjectWithTag("GamePlay").GetComponent<TeamTurn>().AllBoard = boards;
-
         GetComponentInChildren<PawnsInitializer>().Initialize();
 
-        GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion(boards);
+        // THE BOARDS
+        Board[] boards = GetComponentInChildren<BoardInitializer>().boards;
+
+        // Set of the boards when needed
+        GameObject.FindGameObjectWithTag("GamePlay").GetComponent<TeamTurn>().AllBoard = boards;
+        GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion();
     }
 
 }
