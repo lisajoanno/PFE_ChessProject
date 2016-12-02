@@ -14,6 +14,10 @@ public class TeamTurn : MonoBehaviour {
         {
             allBoards = value;
         }
+        get
+        {
+            return allBoards;
+        }
     }
 
     [SerializeField]

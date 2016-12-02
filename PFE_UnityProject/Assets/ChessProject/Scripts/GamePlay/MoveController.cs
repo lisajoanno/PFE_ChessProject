@@ -63,10 +63,24 @@ public class MoveController : MonoBehaviour {
         return true;
     }
 
-
-    public void MakeMoveFromOtherPlayer(String data)
+    public void MakeMoveFromOtherPlayer(Position[] positions)
     {
-        Debug.Log("je move " + data);
+
+        //Debug.Log("je move from " + positions[0]);
+
+        // get du square
+        Square newSquare = teamTurn.AllBoard[0].GetSquare(positions[1].coo).GetComponent<Square>();
+        //Debug.Log(newSquare == null);
+        //Debug.Log("new square : " + newSquare.Position.coo);
+
+        // get du pawn
+        Pawn oldPawn = teamTurn.AllBoard[0].GetSquare(positions[0].coo).GetComponent<Square>().GetComponentInChildren<Pawn>();
+        //Debug.Log(oldPawn == null);
+        //Debug.Log("new square : " + oldPawn.Position.coo);
+
+        MakeMove(oldPawn, newSquare);
+
+        //Debug.Log("jusqu'à " + positions[1]);
     }
 
     /// <summary>

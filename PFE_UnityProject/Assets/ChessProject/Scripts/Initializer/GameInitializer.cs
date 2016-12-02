@@ -13,7 +13,7 @@ public class GameInitializer : MonoBehaviour {
 
         GetComponentInChildren<PawnsInitializer>().Initialize();
 
-        GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion();
+        GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion(GetComponentInChildren<BoardInitializer>().boards);
     }
 
 }
