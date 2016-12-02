@@ -9,11 +9,13 @@ public class GameInitializer : MonoBehaviour {
     {
         GetComponentInChildren<BoardInitializer>().Initialize();
 
-        GameObject.FindGameObjectWithTag("GamePlay").GetComponent<TeamTurn>().AllBoard = GetComponentInChildren<BoardInitializer>().boards;
+        Board[] boards = GetComponentInChildren<BoardInitializer>().boards;
+
+        GameObject.FindGameObjectWithTag("GamePlay").GetComponent<TeamTurn>().AllBoard = boards;
 
         GetComponentInChildren<PawnsInitializer>().Initialize();
 
-        GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion(GetComponentInChildren<BoardInitializer>().boards);
+        GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion(boards);
     }
 
 }
