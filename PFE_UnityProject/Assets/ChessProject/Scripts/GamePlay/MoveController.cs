@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MoveController : MonoBehaviour {
 
@@ -42,18 +43,30 @@ public class MoveController : MonoBehaviour {
         // If the pawn is on the other team, we eat it
         if (pawnOnBoard != null && (pawnOnBoard.Team != pawn.Team)) EatPawn(pawnOnBoard);
 
+
+        // TODO 
+        Position oldPos = pawn.Position;
+        Position newPos = square.Position;
+        connexionManager.MakeAMove(0, (int)oldPos.coo.x, (int)oldPos.coo.y, 0, (int)newPos.coo.x, (int)newPos.coo.y);
+
+
+
         // Real, physical move
         MakeMove(pawn, square);
         // The pawn was moved : the team can change
         teamTurn.ChangeTeam();
 
 
-        // TODO 
-        connexionManager.MakeAMove();
-
+        
 
 
         return true;
+    }
+
+
+    public void MakeMoveFromOtherPlayer(String data)
+    {
+        Debug.Log("je move " + data);
     }
 
     /// <summary>

@@ -6,20 +6,25 @@ using System.Net.Sockets;
 
 public class ConnexionManager : MonoBehaviour
 {
+    TcpClient client;
+    NetworkStream stream;
     private static String IP_SIMON = "10.212.119.247"; 
     private static Int32 PORT = 1234;
 
+    // The controller of moves, to execute the moves received from the other player
+    MoveController moveController;
 
-    TcpClient client;
-    NetworkStream stream;
 
     // Use this for initialization
     void Start()
     {
-        //Debug.Log(Builder(0, 1, 2, 1, 3, 4));
+        // Init of move controller via the scene
+        moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
 
         Connect();
-        
+
+
+
         Write(Builder(0, 0, 0, 0, 0, 0));
         StartCoroutine(Read());
 
@@ -47,9 +52,9 @@ public class ConnexionManager : MonoBehaviour
         Debug.Log("\nConnected.");
     }
 
-    public void MakeAMove()
+    public void MakeAMove(int faceOld, int xOld, int yOld, int faceNew, int xNew, int yNew)
     {
-        Write(Builder(1, 3, 3, 1, 5, 5));
+        Write(Builder(faceOld, xOld, yOld, faceNew, xNew, yNew));
     }
 
     private String Builder(int faceOld, int xOld, int yOld, int faceNew, int xNew, int yNew)
@@ -97,9 +102,13 @@ public class ConnexionManager : MonoBehaviour
                 // Translate data bytes to a ASCII string.
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                 Debug.Log("Received: " + data);
-                yield return new WaitForSeconds(4);
+
+                // Make the move received from the other player
+                moveController.MakeMoveFromOtherPlayer(data);
+
+                yield return new WaitForSeconds(10);
             }
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
