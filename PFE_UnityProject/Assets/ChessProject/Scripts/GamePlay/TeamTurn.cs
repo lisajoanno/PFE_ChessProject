@@ -20,8 +20,10 @@ public class TeamTurn : MonoBehaviour {
         }
     }
 
+    // Text of the team turn
     [SerializeField]
     private Text teamTurnText;
+    // Text of the team you are playing
     [SerializeField]
     private Text YourTeamText;
 
@@ -41,6 +43,7 @@ public class TeamTurn : MonoBehaviour {
         }
     }
 
+    // The team of the pawns you are controlling. It is set by the game initializer at the beginning, when received from the server.
     private int yourTeam;
     public int YourTeam
     {
@@ -55,6 +58,11 @@ public class TeamTurn : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Returns true if a pawn can play.
+    /// </summary>
+    /// <param name="team"></param>
+    /// <returns></returns>
     public bool thisTeamCanPlay(int team)
     {
         if (team == currentTeamPlaying && team == yourTeam) return true;
@@ -81,6 +89,9 @@ public class TeamTurn : MonoBehaviour {
         UpdateAllSelectableCases();
     }
 
+    /// <summary>
+    /// Updates the text of the team currently playing.
+    /// </summary>
     private void UpdateText()
     {
         teamTurnText.text = "Time for team " + currentTeamPlaying + " to play !";
@@ -99,6 +110,7 @@ public class TeamTurn : MonoBehaviour {
                 pawn = square.GetComponentInChildren<Pawn>();
                 if (pawn)
                 {
+                    Debug.Log("je fais qqchose");
                     pawn.UpdateSelectableCases();
                 }
             }

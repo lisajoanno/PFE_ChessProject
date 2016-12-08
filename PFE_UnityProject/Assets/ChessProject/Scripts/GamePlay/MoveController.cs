@@ -6,14 +6,14 @@ public class MoveController : MonoBehaviour {
 
     //the component managing the teams
     private TeamTurn teamTurn;
-
+    // the componenant managing the multiplayer, needed to send a move on the server
     private ConnexionManager connexionManager;
 
     void Start()
     {
         // Initialisation of the team turn component
         teamTurn = GetComponentInParent<TeamTurn>();
-
+        // Initialisation of the Connexion Manager component
         connexionManager = GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>();
     }
 
@@ -54,27 +54,32 @@ public class MoveController : MonoBehaviour {
         oldBoard = GetIntFromBoard(oldPos.board);
         int newBoard = 0;
         newBoard = GetIntFromBoard(newPos.board);
-
-        //TODO: uncomment the following line
         connexionManager.MakeAMoveOnServer(oldBoard, (int)oldPos.coo.x, (int)oldPos.coo.y, newBoard, (int)newPos.coo.x, (int)newPos.coo.y);
         
-
-
-
 
         // Real, physical move
         MakeMove(pawn, square);
         // The pawn was moved : the team can change
         teamTurn.ChangeTeam();
-        
+
         return true;
     }
 
+    /// <summary>
+    /// From an int index, returns the Board object corresponding (in the model of the tab of 6 boards).
+    /// </summary>
+    /// <param name="index">the index if the board</param>
+    /// <returns>the Board object</returns>
     private Board GetBoardObjectFromIndex(int index)
     {
         return teamTurn.AllBoard[index];
     }
 
+    /// <summary>
+    /// From a board object, returns the index in the model of 6 boards corresponding.
+    /// </summary>
+    /// <param name="board"></param>
+    /// <returns></returns>
     private int GetIntFromBoard(Board board)
     {
         for (int i = 0; i<teamTurn.AllBoard.Length; i++)
@@ -91,7 +96,7 @@ public class MoveController : MonoBehaviour {
     /// <param name="pawnOnBoard">the pawn to eat</param>
     private void EatPawn(Pawn pawnOnBoard)
     {
-        GameObject.Destroy(pawnOnBoard.gameObject);
+        GameObject.DestroyImmediate(pawnOnBoard.gameObject);
     }
 
 
