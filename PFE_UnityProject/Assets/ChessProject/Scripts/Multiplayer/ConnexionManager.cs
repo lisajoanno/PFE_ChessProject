@@ -22,13 +22,13 @@ public class ConnexionManager : MonoBehaviour
     {
 
         // Init of move controller via the scene
-        //moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
+        moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
         // Init of the connexion
-        //Connect();
+        Connect();
         // obligé de faire un write avant de lancer la coroutine, sinon ça plante
-        //Write(Builder(0, 0, 0, 0, 0, 0));
+        Write(Builder(0, 0, 0, 0, 0, 0));
         // On lance la coroutine du read
-        //StartCoroutine(Read());
+        StartCoroutine(Read());
 
         //stream.Close();
         //client.Close();
@@ -110,14 +110,12 @@ public class ConnexionManager : MonoBehaviour
     {
         Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
         // Send the message to the connected TcpServer.
-        //TODO: uncomment line !!
-        //stream.Write(data, 0, data.Length);
+        stream.Write(data, 0, data.Length);
         Debug.Log("Sent: " + message);
     }
 
     /// <summary>
     /// Reads from the server a move 
-    /// // TODO mieux le faire (pb de bloquage)?
     /// </summary>
     /// <returns></returns>
     public IEnumerator Read()

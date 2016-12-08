@@ -56,7 +56,7 @@ public class MoveController : MonoBehaviour {
         newBoard = GetIntFromBoard(newPos.board);
 
         //TODO: uncomment the following line
-        //connexionManager.MakeAMoveOnServer(oldBoard, (int)oldPos.coo.x, (int)oldPos.coo.y, newBoard, (int)newPos.coo.x, (int)newPos.coo.y);
+        connexionManager.MakeAMoveOnServer(oldBoard, (int)oldPos.coo.x, (int)oldPos.coo.y, newBoard, (int)newPos.coo.x, (int)newPos.coo.y);
         
 
 
