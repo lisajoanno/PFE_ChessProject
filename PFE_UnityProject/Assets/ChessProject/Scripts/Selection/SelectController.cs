@@ -22,8 +22,28 @@ public class SelectController : MonoBehaviour
     [SerializeField]
     private Color possibleSquaresColor;     //the color of the squares you can select after choosing a pawn
 
-    private MoveController moveCtrl;        //the component that permits to make movement
+    [SerializeField]
+    private GameObject cubeObjTarget;
 
+    private MoveController moveCtrl;        //the component that permits to make movement
+    private ColliderManager cubeCollide;    //the collider manager component
+
+    //TODO: remove those var
+    private bool pawnOk, squareOk;
+
+    private Pawn pawn;
+    private Square square;
+
+    
+    void Start()
+    {
+        cubeCollide = cubeObjTarget.GetComponent<ColliderManager>();
+        pawnOk = false;
+        squareOk = false;
+        pawn = new Pawn();
+        square = new Square();
+    }
+    
     /// <summary>
     ///     Initialize the controller of the selection
     /// </summary>
@@ -36,6 +56,33 @@ public class SelectController : MonoBehaviour
 
         select[0] = new SelectPawn(selectColor, possibleSquaresColor, whatFirstCanSelect);
         select[1] = new Select(selectColor, whatSecondCanSelect);
+    }
+
+    void FixedUpdate()
+    {
+        if (cubeCollide.HasCollide())
+        {
+            GameObject go = cubeCollide.GetComponent<ColliderManager>().SelectedGameObject();
+            ManageSelection(go);
+            cubeCollide.SetHasCollide(false);
+            if (go.layer == LayerMask.NameToLayer("Submit"))
+            {
+                //we have to select 2 gameobject before the validation of the movement
+                if (select[0].HasSthSelected && select[1].HasSthSelected)
+                {
+                    Pawn pawn = select[0].LastSelected.GetComponent<Pawn>();
+                    //if (pawn.GetTeam == teamTurn.GetTeamTurn)
+                    {
+                        Square square = select[1].LastSelected.GetComponent<Square>();
+                        //do the move; eat the pawn at the selected square if needed
+
+                        ResetAllSelection();
+
+                        moveCtrl.Move(pawn, square);
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -84,19 +131,24 @@ public class SelectController : MonoBehaviour
         if (Physics.Raycast(rayToSelect, out hit, float.MaxValue, whatFirstCanSelect | whatSecondCanSelect))
         {
             GameObject newSelected = hit.transform.gameObject;
-            ResetAllColorModel();
-            // The selected GO contains the 'whatFirstCanSelect' layer
-            if (((2 << (newSelected.layer-1)) & whatFirstCanSelect) == whatFirstCanSelect)
-            {
-                select[0].LaunchSelect(newSelected);
-            }
-            // The selected GO contains the 'whatSecondCanSelect' layer
-            else if (((2 << (newSelected.layer - 1)) & whatSecondCanSelect) == whatSecondCanSelect)
-            {
-                if (select[0].HasSthSelected) select[1].LaunchSelect(newSelected);
-            }
-            RecolorAllModel();
+            ManageSelection(newSelected);
         }
+    }
+
+    void ManageSelection(GameObject newSelected)
+    {
+        ResetAllColorModel();
+        // The selected GO contains the 'whatFirstCanSelect' layer
+        if (((2 << (newSelected.layer - 1)) & whatFirstCanSelect) == whatFirstCanSelect)
+        {
+            select[0].LaunchSelect(newSelected);
+        }
+        // The selected GO contains the 'whatSecondCanSelect' layer
+        else if (((2 << (newSelected.layer - 1)) & whatSecondCanSelect) == whatSecondCanSelect)
+        {
+            if (select[0].HasSthSelected) select[1].LaunchSelect(newSelected);
+        }
+        RecolorAllModel();
     }
 
 
