@@ -94,6 +94,7 @@ public class SelectController : MonoBehaviour
         //Fire1 is the button for selecting
         if (Input.GetButtonDown("Fire1"))
         {
+
             // The player tries to select a pawn or a square.
             DetectRay();
         }
@@ -137,6 +138,7 @@ public class SelectController : MonoBehaviour
 
     void ManageSelection(GameObject newSelected)
     {
+
         ResetAllColorModel();
         // The selected GO contains the 'whatFirstCanSelect' layer
         if (((2 << (newSelected.layer - 1)) & whatFirstCanSelect) == whatFirstCanSelect)

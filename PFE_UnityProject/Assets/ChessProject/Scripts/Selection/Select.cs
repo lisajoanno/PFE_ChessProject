@@ -70,6 +70,8 @@ public class Select
     {
         if (CanSelect(newSelected))
         {
+
+
             // we set the game object as the selected game object
             SelectGameObject(newSelected);
         }
@@ -119,6 +121,11 @@ public class Select
     /// <returns>true if we succeed to select something, false otherwise</returns>
     public virtual bool CanSelect(GameObject newSelected)
     {
+        Debug.Log("HELLO?");
+        Debug.Log(hasSthSelected);
+        Debug.Log(lastSelected);
+        Debug.Log(newSelected);
+
         //if we select a gameobject different from the previous one
         return !hasSthSelected || lastSelected != newSelected;
     }
