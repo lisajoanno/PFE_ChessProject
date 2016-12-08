@@ -35,7 +35,7 @@ public class SelectPawn : Select
             Pawn pawn = newSelected.GetComponent<Pawn>();
 
             // The pawn's team needs to be the current team playing
-            return (pawn.Team == teamTurn.CurrentTeamPlaying);
+            return (/**pawn.Team == teamTurn.CurrentTeamPlaying**/ teamTurn.thisTeamCanPlay(pawn.Team));
         }
         return false;
     }

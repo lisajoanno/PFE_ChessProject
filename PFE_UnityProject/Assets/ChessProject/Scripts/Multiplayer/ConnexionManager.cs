@@ -7,7 +7,8 @@ public class ConnexionManager : MonoBehaviour
 {
     TcpClient client;
     NetworkStream stream;
-    private static String IP = "10.212.119.247"; 
+    private static String IP_MAC = "10.212.119.247"; 
+    private static String IP = "192.168.43.190";
     private static Int32 PORT = 1234;
 
     // The controller of moves, to execute the moves received from the other player
@@ -16,8 +17,8 @@ public class ConnexionManager : MonoBehaviour
     /// <summary>
     /// Initialisation of the multiplayer connexion.
     /// </summary>
-    /// <param name="boards"></param>
-    public void StartConnexion()
+    /// <returns>the team of this client (0 or 1)</returns>
+    public int StartConnexion()
     {
 
         // Init of move controller via the scene
@@ -31,6 +32,9 @@ public class ConnexionManager : MonoBehaviour
 
         //stream.Close();
         //client.Close();
+
+        // TODO GET THE TEAM FROM SERVER
+        return 1;
     }
 
     /// <summary>
@@ -120,26 +124,26 @@ public class ConnexionManager : MonoBehaviour
         Byte[] bytes = new Byte[256];
         String data = null;
         int i;
-        //for (;;)
+        for (;;)
         {
-            while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+            if (stream.DataAvailable)
             {
-                
+                i = stream.Read(bytes, 0, bytes.Length);
                 // Translate data bytes to a ASCII string.
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                 Debug.Log("Received: " + data);
 
                 // Make the move received from the other player
-                try {
+                try
+                {
                     moveController.MakeMoveFromOtherPlayer(data);
-                } catch (Exception)
+                }
+                catch (Exception)
                 {
                     Debug.Log("There was an exception in the move : the pawn or the square was not recognized ?");
                 }
-
-                yield return new WaitForSeconds(10);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
         }
     }
 

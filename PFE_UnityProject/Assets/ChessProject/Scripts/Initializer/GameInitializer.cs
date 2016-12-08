@@ -15,7 +15,8 @@ public class GameInitializer : MonoBehaviour {
 
         // Set of the boards when needed
         GameObject.FindGameObjectWithTag("GamePlay").GetComponent<TeamTurn>().AllBoard = boards;
-        GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion();
+        int thisTeam = GameObject.FindGameObjectWithTag("ConnexionManager").GetComponent<ConnexionManager>().StartConnexion();
+        GameObject.FindGameObjectWithTag("GamePlay").GetComponent<TeamTurn>().YourTeam = thisTeam;
     }
 
 }

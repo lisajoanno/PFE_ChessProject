@@ -22,6 +22,8 @@ public class TeamTurn : MonoBehaviour {
 
     [SerializeField]
     private Text teamTurnText;
+    [SerializeField]
+    private Text YourTeamText;
 
     void Start()
     {
@@ -37,6 +39,27 @@ public class TeamTurn : MonoBehaviour {
         {
             return currentTeamPlaying;
         }
+    }
+
+    private int yourTeam;
+    public int YourTeam
+    {
+        get
+        {
+            return yourTeam;
+        }
+        set
+        {
+            this.yourTeam = value;
+            this.YourTeamText.text = "Your team : " + this.yourTeam;
+        }
+    }
+
+    public bool thisTeamCanPlay(int team)
+    {
+        if (team == currentTeamPlaying && team == yourTeam) return true;
+        else return false;
+        // ((team > 1) || (team < 0) || currentTeamPlaying > 1 || (currentTeamPlaying < 0)) 
     }
 
     /// <summary>
@@ -60,7 +83,7 @@ public class TeamTurn : MonoBehaviour {
 
     private void UpdateText()
     {
-        teamTurnText.text = "A la team " + currentTeamPlaying + " de jouer !";
+        teamTurnText.text = "Time for team " + currentTeamPlaying + " to play !";
     }
 
     /// <summary>
