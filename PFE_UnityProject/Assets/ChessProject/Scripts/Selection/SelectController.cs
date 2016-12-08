@@ -58,39 +58,39 @@ public class SelectController : MonoBehaviour
         select[1] = new Select(selectColor, whatSecondCanSelect);
     }
 
+    void FixedUpdate()
+    {
+        if (cubeCollide.HasCollide())
+        {
+            GameObject go = cubeCollide.GetComponent<ColliderManager>().SelectedGameObject();
+            ManageSelection(go);
+            cubeCollide.SetHasCollide(false);
+            if (go.layer == LayerMask.NameToLayer("Submit"))
+            {
+                //we have to select 2 gameobject before the validation of the movement
+                if (select[0].HasSthSelected && select[1].HasSthSelected)
+                {
+                    Pawn pawn = select[0].LastSelected.GetComponent<Pawn>();
+                    //if (pawn.GetTeam == teamTurn.GetTeamTurn)
+                    {
+                        Square square = select[1].LastSelected.GetComponent<Square>();
+                        //do the move; eat the pawn at the selected square if needed
+
+                        ResetAllSelection();
+
+                        moveCtrl.Move(pawn, square);
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>
     ///     Catch the input of the mouse and use it
     ///     to select an object
     /// </summary>
     void Update()
     {
-        if (cubeCollide.PawnIsSelected())
-        {
-            pawn = cubeCollide.GetComponent<ColliderManager>().SelectedGameObject().GetComponent<Pawn>();
-            ManageSelection(pawn.gameObject);
-            cubeCollide.SetPawnIsSelected(false);
-            pawnOk = true;
-        }
-
-        if (cubeCollide.SquareIsSelected() && pawnOk)
-        {
-            cubeCollide.SetSumbitIsSelected(false);
-            //we manage the selection only if the user select a valid square
-            if (cubeCollide.GetComponent<ColliderManager>().SelectedGameObject().GetComponent<Square>().GetComponent<Renderer>().material.color == possibleSquaresColor)
-            {
-                square = cubeCollide.GetComponent<ColliderManager>().SelectedGameObject().GetComponent<Square>();
-                ManageSelection(square.gameObject);
-                cubeCollide.SetSquareIsSelected(false);
-                squareOk = true;
-            }
-        }
-
-        if(cubeCollide.SubmitIsSelected() && squareOk)
-        {
-            ResetAllSelection();
-            moveCtrl.Move(pawn, square);
-        }
-
         //Fire1 is the button for selecting
         if (Input.GetButtonDown("Fire1"))
         {

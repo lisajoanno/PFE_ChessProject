@@ -3,16 +3,12 @@
 public class ColliderManager : MonoBehaviour
 {
 
-    private bool pawnSelected;
-    private bool squareSelected;
-    private bool submitSelected;
+    private bool hasCollide;
     private GameObject go;
     
     void Start()
     {
-        pawnSelected = false;
-        squareSelected = false;
-        submitSelected = false;
+        hasCollide = false;
         go = new GameObject();
     }
     
@@ -23,51 +19,24 @@ public class ColliderManager : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Pawn"))
-        {
-            pawnSelected = true;
-            go = other.gameObject;
-        }
-        if (other.gameObject.layer == LayerMask.NameToLayer("Square"))
-        {
-            squareSelected = true;
-            go = other.gameObject;
-        }
-        if (other.gameObject.layer == LayerMask.NameToLayer("Submit"))
-        {
-            submitSelected = true;
-            Debug.Log("Submit hit !");
-        }
+        go = other.gameObject;
+        hasCollide = true;
     }
 
-    public bool PawnIsSelected()
+    void OnTriggerExit(Collider other)
     {
-        return pawnSelected;
+        hasCollide = false;
+        go = null;
     }
 
-    public void SetPawnIsSelected(bool ps)
+    public bool HasCollide()
     {
-        pawnSelected = ps;
+        return hasCollide;
     }
 
-    public bool SquareIsSelected()
+    public void SetHasCollide(bool b)
     {
-        return squareSelected;
-    }
-
-    public void SetSquareIsSelected(bool sqs)
-    {
-        squareSelected = sqs;
-    }
-
-    public bool SubmitIsSelected()
-    {
-        return submitSelected;
-    }
-
-    public void SetSumbitIsSelected(bool subs)
-    {
-        submitSelected = subs;
+        hasCollide = b;
     }
 
     public GameObject SelectedGameObject()
