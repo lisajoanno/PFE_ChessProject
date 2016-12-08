@@ -34,7 +34,7 @@ public class ConnexionManager : MonoBehaviour
         //client.Close();
 
         // TODO GET THE TEAM FROM SERVER
-        return 0;
+        return 1;
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class ConnexionManager : MonoBehaviour
         {
             Debug.Log("SocketException: " + e);
         }
-        Debug.Log("Connected.");
+        //Debug.Log("Connected.");
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class ConnexionManager : MonoBehaviour
         Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
         // Send the message to the connected TcpServer.
         stream.Write(data, 0, data.Length);
-        Debug.Log("Sent: " + message);
+        //Debug.Log("Sent: " + message);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public class ConnexionManager : MonoBehaviour
                 i = stream.Read(bytes, 0, bytes.Length);
                 // Translate data bytes to a ASCII string.
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                Debug.Log("Received: " + data);
+                //Debug.Log("Received: " + data);
 
                 // Make the move received from the other player
                 try

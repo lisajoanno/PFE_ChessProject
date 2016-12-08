@@ -113,7 +113,7 @@ public class MoveController : MonoBehaviour {
         // Set of the rigth position, on the right board
         pawn.gameObject.transform.position = board.GetSquare(pos).gameObject.transform.position;
         // The pawn needs to be on the case
-        pawn.gameObject.transform.position += (pawn.gameObject.transform.up) * 3;
+        pawn.gameObject.transform.position += (pawn.gameObject.transform.up) * 80;
         pawn.gameObject.transform.SetParent(board.GetSquare(pos).gameObject.transform);
 
         // We update the selectable cases of the pawn just moved
