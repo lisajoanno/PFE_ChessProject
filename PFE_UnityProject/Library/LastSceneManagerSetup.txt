@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/ChessProject/Scenes/DevScene_Lisa.unity
+  isLoaded: 1
+  isActive: 1

@@ -34,7 +34,7 @@ public class ConnexionManager : MonoBehaviour
         //client.Close();
 
         // TODO GET THE TEAM FROM SERVER
-        return 1;
+        return 0;
     }
 
     /// <summary>
