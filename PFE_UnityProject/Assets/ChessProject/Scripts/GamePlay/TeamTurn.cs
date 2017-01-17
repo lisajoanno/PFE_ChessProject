@@ -110,7 +110,7 @@ public class TeamTurn : MonoBehaviour {
                 pawn = square.GetComponentInChildren<Pawn>();
                 if (pawn)
                 {
-                    Debug.Log("je fais qqchose");
+                    //Debug.Log("je fais qqchose");
                     pawn.UpdateSelectableCases();
                 }
             }

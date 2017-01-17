@@ -8,7 +8,7 @@ public class ConnexionManager : MonoBehaviour
     TcpClient client;
     NetworkStream stream;
     private static String IP_MAC = "10.212.119.247"; 
-    private static String IP = "10.212.115.56";
+    private static String IP = "10.212.96.248";
     private static Int32 PORT = 1234;
 
     // The controller of moves, to execute the moves received from the other player
@@ -22,19 +22,19 @@ public class ConnexionManager : MonoBehaviour
     {
         //TODO uncomment toute la fonction
         // Init of move controller via the scene
-        //moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
+        moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
         // Init of the connexion
-        //Connect();
+        Connect();
         // obligé de faire un write avant de lancer la coroutine, sinon ça plante
-        //Write(Builder(0, 0, 0, 0, 0, 0));
+        Write(Builder(0, 0, 0, 0, 0, 0));
         // On lance la coroutine du read
-        //StartCoroutine(Read());
+        StartCoroutine(Read());
 
         //stream.Close();
         //client.Close();
 
         // TODO GET THE TEAM FROM SERVER
-        return 0;
+        return 1;
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class ConnexionManager : MonoBehaviour
         Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
         // Send the message to the connected TcpServer.
         //TODO uncomment
-        //stream.Write(data, 0, data.Length);
+        stream.Write(data, 0, data.Length);
         //Debug.Log("Sent: " + message);
     }
 
