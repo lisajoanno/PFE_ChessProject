@@ -20,21 +20,21 @@ public class ConnexionManager : MonoBehaviour
     /// <returns>the team of this client (0 or 1)</returns>
     public int StartConnexion()
     {
-
+        //TODO uncomment toute la fonction
         // Init of move controller via the scene
-        moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
+        //moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
         // Init of the connexion
-        Connect();
+        //Connect();
         // obligé de faire un write avant de lancer la coroutine, sinon ça plante
-        Write(Builder(0, 0, 0, 0, 0, 0));
+        //Write(Builder(0, 0, 0, 0, 0, 0));
         // On lance la coroutine du read
-        StartCoroutine(Read());
+        //StartCoroutine(Read());
 
         //stream.Close();
         //client.Close();
 
         // TODO GET THE TEAM FROM SERVER
-        return 1;
+        return 0;
     }
 
     /// <summary>
@@ -110,7 +110,8 @@ public class ConnexionManager : MonoBehaviour
     {
         Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
         // Send the message to the connected TcpServer.
-        stream.Write(data, 0, data.Length);
+        //TODO uncomment
+        //stream.Write(data, 0, data.Length);
         //Debug.Log("Sent: " + message);
     }
 
