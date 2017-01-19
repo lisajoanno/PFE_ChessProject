@@ -59,6 +59,14 @@ public class MoveController : MonoBehaviour {
 
         // Real, physical move
         MakeMove(pawn, square);
+
+        //do the effect of the trap if there is
+        Trap trap = square.GetComponentInChildren<Trap>();
+        if (trap != null)
+        {
+            trap.Apply();
+            trap.ApplyEffectOnServer(connexionManager);
+        }
         // The pawn was moved : the team can change
         teamTurn.ChangeTeam();
 
