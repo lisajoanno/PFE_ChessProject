@@ -3245,6 +3245,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000011694028042
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011804667464}
+  - 114: {fileID: 114000011768620128}
+  m_Layer: 8
+  m_Name: InputTeleportTrap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011698277414
 GameObject:
   m_ObjectHideFlags: 1
@@ -9731,7 +9747,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010182733832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 473.6875, y: 251.50803, z: -623.2698}
+  m_LocalPosition: {x: 2379.197, y: -386.54984, z: -3316.6338}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -10728,6 +10744,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011509625622}
   m_RootOrder: 7
+--- !u!4 &4000011804667464
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011694028042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012587670724}
+  m_RootOrder: 0
 --- !u!4 &4000011817776610
 Transform:
   m_ObjectHideFlags: 1
@@ -11860,7 +11889,8 @@ Transform:
   m_LocalPosition: {x: 44, y: 1.0296707, z: -6.002451}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000011804667464}
   m_Father: {fileID: 4000011690376518}
   m_RootOrder: 4
 --- !u!4 &4000012591414228
@@ -34565,6 +34595,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38905e535512cca45b5a13e6638fc82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011768620128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011694028042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2eb858d831cc644a4a48501d4e0e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114000012729276188}
 --- !u!114 &114000011770023854
 MonoBehaviour:
   m_ObjectHideFlags: 1

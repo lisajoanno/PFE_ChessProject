@@ -17,15 +17,16 @@ public abstract class Trap : MonoBehaviour {
 
     void Start()
     {
+        Init();
+    }
+
+    public virtual void Init()
+    {
         this.square = gameObject.GetComponentInParent<Square>();
     }
 
     public virtual void Apply()
     {
         Debug.Log("[TRAP]The trap is abstract, it doesn't do anything.");
-    }
-    public virtual void ApplyEffectOnServer(ConnexionManager coo)
-    {
-        Debug.Log("[TRAP][SERVER]The trap is abstract, it doesn't do anything on the server.");
     }
 }

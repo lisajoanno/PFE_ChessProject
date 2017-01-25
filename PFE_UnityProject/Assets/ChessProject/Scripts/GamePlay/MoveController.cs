@@ -109,8 +109,8 @@ public class MoveController : MonoBehaviour {
     public void MakeMove(Pawn pawn, Square square)
     {
         pawn.Position = square.Position;
-        Board board = pawn.GetComponent<Pawn>().Position.board;
-        Vector2 pos = pawn.GetComponent<Pawn>().Position.coo;
+        Board board = pawn.Position.board;
+        Vector2 pos = pawn.Position.coo;
 
         //lol RIP en paix les deux heures passees la dessus
         pawn.gameObject.transform.SetParent(null);
@@ -130,7 +130,6 @@ public class MoveController : MonoBehaviour {
         if (trap != null)
         {
             trap.Apply();
-            trap.ApplyEffectOnServer(connexionManager);
         }
     }
 

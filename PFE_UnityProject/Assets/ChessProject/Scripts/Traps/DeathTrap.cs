@@ -8,9 +8,4 @@ public class DeathTrap : Trap {
         Pawn pawn = square.GetComponentInChildren<Pawn>();
         DestroyImmediate(pawn.gameObject);
     }
-
-    public override void ApplyEffectOnServer(ConnexionManager coo)
-    {
-        Debug.Log("You must send to the server a message to say that the pawn has been destroyed");
-    }
 }
