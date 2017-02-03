@@ -9,6 +9,8 @@ public class MoveController : MonoBehaviour {
     // the componenant managing the multiplayer, needed to send a move on the server
     private ConnexionManager connexionManager;
 
+    public int pawnHeightInScene = 80;
+
     void Start()
     {
         // Initialisation of the team turn component
@@ -119,7 +121,7 @@ public class MoveController : MonoBehaviour {
         // Set of the rigth position, on the right board
         pawn.gameObject.transform.position = board.GetSquare(pos).gameObject.transform.position;
         // The pawn needs to be on the case
-        pawn.gameObject.transform.position += (pawn.gameObject.transform.up) * 80;
+        pawn.gameObject.transform.position += (pawn.gameObject.transform.up) * pawnHeightInScene;
         pawn.gameObject.transform.SetParent(board.GetSquare(pos).gameObject.transform);
 
         // We update the selectable cases of the pawn just moved
