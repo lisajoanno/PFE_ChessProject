@@ -146,9 +146,17 @@ public class SelectController : MonoBehaviour
             select[0].LaunchSelect(newSelected);
         }
         // The selected GO contains the 'whatSecondCanSelect' layer and it is a valid selectable square
-        else if ((((2 << (newSelected.layer - 1)) & whatSecondCanSelect) == whatSecondCanSelect) && newSelected.GetComponent<Renderer>().material.color == possibleSquaresColor)
+        else if ((((2 << (newSelected.layer - 1)) & whatSecondCanSelect) == whatSecondCanSelect))
         {
-            if (select[0].HasSthSelected) select[1].LaunchSelect(newSelected);
+            if (select[0].HasSthSelected)
+            {
+                pawn = select[0].LastSelected.GetComponent<Pawn>();
+                Debug.Log("PAWN SELECTABLE CASES: " + pawn.PossibleMoveCases.ToString());
+                if (pawn.PossibleMoveCases.Contains(newSelected.GetComponent<Square>().Position))
+                {
+                    select[1].LaunchSelect(newSelected);
+                }
+            }
         }
         RecolorAllModel();
     }
