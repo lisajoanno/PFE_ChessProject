@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <CylinderTarget name="Moyen" sideLength="33.000000"/>
+        <CylinderTarget name="Grand" sideLength="45.000000"/>
+        <ImageTarget name="celleci" size="6.300000 4.530337"/>
+        <ImageTarget name="TicTac.Left" size="60.000000 20.987654"/>
+        <ImageTarget name="TicTac.Right" size="60.000000 20.987654"/>
+        <ImageTarget name="TicTac.Bottom" size="48.000000 59.991184"/>
+        <ImageTarget name="TicTac.Front" size="48.000000 20.984570"/>
+        <ImageTarget name="TicTac.Top" size="48.000000 59.991184"/>
+        <MultiTarget name="TicTac">
+            <Part name="TicTac.Left" translation="-24.0 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="TicTac.Right" translation="24.0 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="TicTac.Front" translation="0 0 30.0" rotation="AD: 1 0 0 0"/>
+            <Part name="TicTac.Top" translation="0 10.5 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="TicTac.Bottom" translation="0 -10.5 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>

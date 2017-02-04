@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="CubeDeSimon.Bottom" size="26.000000 62.012943"/>
+        <ImageTarget name="CubeDeSimon.Top" size="26.000000 62.012943"/>
+        <ImageTarget name="CubeDeSimon.Right" size="62.000000 25.994572"/>
+        <ImageTarget name="CubeDeSimon.Left" size="62.000000 25.994572"/>
+        <MultiTarget name="CubeDeSimon">
+            <Part name="CubeDeSimon.Left" translation="-13.0 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="CubeDeSimon.Right" translation="13.0 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="CubeDeSimon.Top" translation="0 13.0 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="CubeDeSimon.Bottom" translation="0 -13.0 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>
