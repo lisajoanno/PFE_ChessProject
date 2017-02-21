@@ -63,7 +63,7 @@ public class Board {
 		}
 	}
 
-	public Board() : this(8,8)
+	public Board() : this(4,4)
 	{    }
 
 	public Board(int rows, int columns)

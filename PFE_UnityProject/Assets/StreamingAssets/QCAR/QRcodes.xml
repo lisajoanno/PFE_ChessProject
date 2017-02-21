@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="QRcode2.Left" size="28.000000 65.070419"/>
+        <ImageTarget name="QRcode2.Top" size="28.000000 28.000000"/>
+        <ImageTarget name="QRcode2.Front" size="28.000000 65.070419"/>
+        <ImageTarget name="QRcode2.Back" size="28.000000 65.070419"/>
+        <ImageTarget name="QRcode2.Right" size="28.000000 65.070419"/>
+        <ImageTarget name="QRcode1.Left" size="28.000000 65.070419"/>
+        <ImageTarget name="QRcode1.Top" size="28.000000 28.000000"/>
+        <ImageTarget name="QRcode1.Front" size="28.000000 65.070419"/>
+        <ImageTarget name="QRcode1.Back" size="28.000000 65.070419"/>
+        <ImageTarget name="QRcode1.Right" size="28.000000 65.070419"/>
+        <MultiTarget name="QRcode2">
+            <Part name="QRcode2.Left" translation="-14.0 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="QRcode2.Right" translation="14.0 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="QRcode2.Front" translation="0 0 14.0" rotation="AD: 1 0 0 0"/>
+            <Part name="QRcode2.Back" translation="0 0 -14.0" rotation="AD: 0 1 0 180"/>
+            <Part name="QRcode2.Top" translation="0 32.5 0" rotation="AD: 1 0 0 -90"/>
+        </MultiTarget>
+        <MultiTarget name="QRcode1">
+            <Part name="QRcode1.Left" translation="-14.0 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="QRcode1.Right" translation="14.0 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="QRcode1.Front" translation="0 0 14.0" rotation="AD: 1 0 0 0"/>
+            <Part name="QRcode1.Back" translation="0 0 -14.0" rotation="AD: 0 1 0 180"/>
+            <Part name="QRcode1.Top" translation="0 32.5 0" rotation="AD: 1 0 0 -90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>

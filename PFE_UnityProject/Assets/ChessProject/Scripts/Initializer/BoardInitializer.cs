@@ -11,22 +11,22 @@ public class BoardInitializer : MonoBehaviour {
     //public GameObject boardGO;
 
     [SerializeField]
-    private GameObject board1;
+    private GameObject cubeBoard1;
 
     [SerializeField]
-    private GameObject board2;
+    private GameObject cubeBoard2;
 
     [SerializeField]
-    private GameObject board3;
+    private GameObject cubeBoard3;
 
     [SerializeField]
-    private GameObject board4;
+    private GameObject cubeBoard4;
 
     [SerializeField]
-    private GameObject board5;
+    private GameObject cubeBoard5;
 
     [SerializeField]
-    private GameObject board6;
+    private GameObject cubeBoard6;
 
     // A table of 6 boards
     public Board[] boards;
@@ -38,23 +38,23 @@ public class BoardInitializer : MonoBehaviour {
     /// </summary>
     public void Initialize()
     {
-        GameObject cubeBoard1 = (GameObject) GameObject.Instantiate(board1, new Vector3(0, 0, 0), new Quaternion());
-        cubeBoard1.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
+        //GameObject cubeBoard1 = (GameObject) GameObject.Instantiate(board1, new Vector3(0, 0, 0), new Quaternion());
+        //cubeBoard1.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
 
-        GameObject cubeBoard2 = (GameObject)GameObject.Instantiate(board2, new Vector3(0, 0, 0), new Quaternion());
-        cubeBoard2.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
+        //GameObject cubeBoard2 = (GameObject)GameObject.Instantiate(board2, new Vector3(0, 0, 0), new Quaternion());
+        //cubeBoard2.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
 
-        GameObject cubeBoard3 = (GameObject)GameObject.Instantiate(board3, new Vector3(0, 0, 0), new Quaternion());
-        cubeBoard3.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
+        //GameObject cubeBoard3 = (GameObject)GameObject.Instantiate(board3, new Vector3(0, 0, 0), new Quaternion());
+        //cubeBoard3.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
 
-        GameObject cubeBoard4 = (GameObject)GameObject.Instantiate(board4, new Vector3(0, 0, 0), new Quaternion());
-        cubeBoard4.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
+        //GameObject cubeBoard4 = (GameObject)GameObject.Instantiate(board4, new Vector3(0, 0, 0), new Quaternion());
+        //cubeBoard4.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
 
-        GameObject cubeBoard5 = (GameObject)GameObject.Instantiate(board5, new Vector3(0, 0, 0), new Quaternion());
-        cubeBoard5.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
+        //GameObject cubeBoard5 = (GameObject)GameObject.Instantiate(board5, new Vector3(0, 0, 0), new Quaternion());
+        //cubeBoard5.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
 
-        GameObject cubeBoard6 = (GameObject)GameObject.Instantiate(board6, new Vector3(0, 0, 0), new Quaternion());
-        cubeBoard6.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
+        //GameObject cubeBoard6 = (GameObject)GameObject.Instantiate(board6, new Vector3(0, 0, 0), new Quaternion());
+        //cubeBoard6.transform.SetParent(GameObject.FindGameObjectWithTag("ImageTarget").gameObject.transform);
 
         // Initialization of data model : boards
         boards = new Board[6];
@@ -77,7 +77,7 @@ public class BoardInitializer : MonoBehaviour {
         for (int b = 0; b < allCubeBoards.Length; b++)
         {
             // for : ROW
-            for (int r = 0; r < board1.transform.childCount; r++)
+            for (int r = 0; r < cubeBoard1 /*previously board1 */.transform.childCount; r++)
             {
                 GameObject boardRow = allCubeBoards[b].transform.GetChild(r).gameObject;
 

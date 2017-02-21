@@ -103,6 +103,7 @@ public class Pawn : ChessElement {
 
                     //prepare the list of matrices
                     convertMatrices = new List<int[,]>();
+                    Debug.Log(current.board == null);
                     current = current.board.GetPositionFromTo(current.coo, newMove, ref convertMatrices);
 
                     // If there is a pawn on the next square, it stops the movement, so canContinue = false
