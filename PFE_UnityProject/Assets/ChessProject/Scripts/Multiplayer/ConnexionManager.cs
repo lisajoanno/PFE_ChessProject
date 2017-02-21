@@ -8,7 +8,7 @@ public class ConnexionManager : MonoBehaviour
     TcpClient client;
     NetworkStream stream;
     private static String IP_MAC = "10.212.119.247"; 
-    private static String IP = "10.212.107.242";
+    private static String IP = "10.212.96.248";
     private static Int32 PORT = 1234;
 
     // The controller of moves, to execute the moves received from the other player
@@ -34,7 +34,7 @@ public class ConnexionManager : MonoBehaviour
         //client.Close();
 
         // TODO GET THE TEAM FROM SERVER
-        return 1;
+        return 0;
     }
 
     /// <summary>
