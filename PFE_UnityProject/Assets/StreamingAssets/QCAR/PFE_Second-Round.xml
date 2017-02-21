@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="submit" size="500.000000 498.663116" />
+    <ImageTarget name="face5" size="500.000000 500.000000" />
+    <ImageTarget name="face4" size="500.000000 500.000000" />
+    <ImageTarget name="face3" size="500.000000 500.000000" />
+    <ImageTarget name="face2" size="500.000000 500.000000" />
+    <ImageTarget name="face1" size="500.000000 500.000000" />
+    <ImageTarget name="patate" size="500.000000 477.633484" />
+  </Tracking>
+</QCARConfig>
