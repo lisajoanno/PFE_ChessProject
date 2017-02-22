@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="QRdistribuez" size="500.000000 497.797363" />
-    <ImageTarget name="QRguerre" size="500.000000 497.333344" />
-    <ImageTarget name="QRrencontre" size="500.000000 501.210663" />
-    <ImageTarget name="QRroi" size="500.000000 498.663116" />
-    <ImageTarget name="QRpersonnages" size="500.000000 500.000000" />
-    <ImageTarget name="QRmangez" size="500.000000 501.879700" />
-    <ImageTarget name="patate" size="500.000000 477.633484" />
+    <ImageTarget name="logoEatHat" size="500.000000 498.079376" />
   </Tracking>
 </QCARConfig>
