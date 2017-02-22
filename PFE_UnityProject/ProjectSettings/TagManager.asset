@@ -8,6 +8,7 @@ TagManager:
   - GamePlay
   - ConnexionManager
   - ImageTarget
+  - Pawn
   layers:
   - Default
   - TransparentFX

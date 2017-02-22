@@ -2941,8 +2941,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013544941358}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -18.786297, y: 5.097, z: -6.036}
-  m_LocalScale: {x: 0.024000006, y: 0.024000058, z: 0.024000058}
+  m_LocalPosition: {x: -19.666018, y: 5.3356814, z: -6.318652}
+  m_LocalScale: {x: 0.025123874, y: 0.025123928, z: 0.025123928}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
   - {fileID: 4000010082336914}
@@ -3729,7 +3729,7 @@ Transform:
   m_GameObject: {fileID: 1000014236908078}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 455, y: 63.526062, z: -436}
-  m_LocalScale: {x: 501.21066, y: 501.21066, z: 501.21066}
+  m_LocalScale: {x: 500, y: 500, z: 500}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 4000012992129898}
@@ -3828,8 +3828,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012703790914}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -18.766857, y: 5.085, z: -5.995}
-  m_LocalScale: {x: 0.023942059, y: 0.023942124, z: 0.023942124}
+  m_LocalPosition: {x: -18.766851, y: 5.0849986, z: -5.9949985}
+  m_LocalScale: {x: 0.023942053, y: 0.023942119, z: 0.023942119}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
   - {fileID: 4000010622358900}
@@ -3987,8 +3987,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010538445202}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -18.812298, y: 5.097, z: -6.037}
-  m_LocalScale: {x: 0.024000054, y: 0.024000134, z: 0.024000134}
+  m_LocalPosition: {x: -18.729425, y: 5.0745463, z: -6.0104055}
+  m_LocalScale: {x: 0.023894329, y: 0.023894407, z: 0.023894407}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
   - {fileID: 4000014136506898}
@@ -4074,7 +4074,7 @@ Transform:
   m_GameObject: {fileID: 1000014103366134}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1019, y: 63.526062, z: 59}
-  m_LocalScale: {x: 501.8797, y: 501.8797, z: 501.8797}
+  m_LocalScale: {x: 500, y: 500, z: 500}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 4000010357372378}
@@ -9503,10 +9503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: QRdistribuez
+  mTrackableName: face3
   mPreserveChildSize: 1
   mInitializedInEditor: 1
-  mDataSetPath: QCAR/cube_eathat.xml
+  mDataSetPath: QCAR/PFE_Second-Round.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -9516,10 +9516,10 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 0.99559474
+  mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 500
-  mHeight: 497.79736
+  mHeight: 500
 --- !u!114 &114000010160477704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9575,10 +9575,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: QRrencontre
+  mTrackableName: face2
   mPreserveChildSize: 1
   mInitializedInEditor: 1
-  mDataSetPath: QCAR/cube_eathat.xml
+  mDataSetPath: QCAR/PFE_Second-Round.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -9588,10 +9588,10 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 1.0024214
+  mAspectRatio: 1
   mImageTargetType: 0
-  mWidth: 499.99997
-  mHeight: 501.21066
+  mWidth: 500
+  mHeight: 500
 --- !u!114 &114000010422164128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9625,10 +9625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: QRmangez
+  mTrackableName: face5
   mPreserveChildSize: 1
   mInitializedInEditor: 1
-  mDataSetPath: QCAR/cube_eathat.xml
+  mDataSetPath: QCAR/PFE_Second-Round.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -9638,10 +9638,10 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 1.0037594
+  mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 500
-  mHeight: 501.8797
+  mHeight: 500
 --- !u!114 &114000010544907134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10127,9 +10127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTrackableName: patate
-  mPreserveChildSize: 1
+  mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: QCAR/cube_eathat.xml
+  mDataSetPath: QCAR/PFE_Second-Round.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -10209,10 +10209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: QRpersonnages
+  mTrackableName: face4
   mPreserveChildSize: 1
   mInitializedInEditor: 1
-  mDataSetPath: QCAR/cube_eathat.xml
+  mDataSetPath: QCAR/PFE_Second-Round.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -10430,10 +10430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadfb90286c81fd42a6785e4e7cd3024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: QRguerre
+  mTrackableName: face1
   mPreserveChildSize: 1
   mInitializedInEditor: 1
-  mDataSetPath: QCAR/cube_eathat.xml
+  mDataSetPath: QCAR/PFE_Second-Round.xml
   mExtendedTracking: 0
   mInitializeSmartTerrain: 0
   mReconstructionToInitialize: {fileID: 0}
@@ -10443,10 +10443,10 @@ MonoBehaviour:
   mSmartTerrainOccluderOffset: {x: 0, y: 0, z: 0}
   mSmartTerrainOccluderRotation: {x: 0, y: 0, z: 0, w: 0}
   mAutoSetOccluderFromTargetSize: 0
-  mAspectRatio: 0.9946667
+  mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 500
-  mHeight: 497.33334
+  mHeight: 500
 --- !u!114 &114000012923760912
 MonoBehaviour:
   m_ObjectHideFlags: 1
