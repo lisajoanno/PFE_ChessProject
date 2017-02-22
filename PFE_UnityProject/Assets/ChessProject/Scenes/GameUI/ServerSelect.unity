@@ -175,9 +175,10 @@ GameObject:
   - 222: {fileID: 279834895}
   - 114: {fileID: 279834894}
   - 114: {fileID: 279834893}
+  - 114: {fileID: 279834896}
   m_Layer: 5
   m_Name: InputField
-  m_TagString: Untagged
+  m_TagString: IP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,6 +299,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 279834891}
+--- !u!114 &279834896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 279834891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72600bb770e03445934be93f5d03148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350114290
 GameObject:
   m_ObjectHideFlags: 0

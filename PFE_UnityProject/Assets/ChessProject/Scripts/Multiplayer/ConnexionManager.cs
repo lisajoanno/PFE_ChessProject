@@ -8,7 +8,7 @@ public class ConnexionManager : MonoBehaviour
     TcpClient client;
     NetworkStream stream;
     private static String IP_MAC = "10.212.119.247"; 
-    private static String IP = "10.212.96.248";
+    private String IP;
     private static Int32 PORT = 1234;
 
     // The controller of moves, to execute the moves received from the other player
@@ -24,7 +24,7 @@ public class ConnexionManager : MonoBehaviour
         // Init of move controller via the scene
         moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
         // Init of the connexion
-        Connect();
+        Connect(); 
         // obligé de faire un write avant de lancer la coroutine, sinon ça plante
         Write(Builder(0, 0, 0, 0, 0, 0));
         // On lance la coroutine du read
@@ -42,6 +42,8 @@ public class ConnexionManager : MonoBehaviour
     /// </summary>
     void Connect()
     {
+        IP = GameObject.FindGameObjectWithTag("IP").GetComponentInChildren<UnityEngine.UI.Text>().text;
+        Debug.Log("IP = " + IP);
         try
         {
             client = new TcpClient(IP, PORT);
