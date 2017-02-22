@@ -9,6 +9,7 @@ TagManager:
   - ConnexionManager
   - ImageTarget
   - IP
+  - Canvas
   layers:
   - Default
   - TransparentFX

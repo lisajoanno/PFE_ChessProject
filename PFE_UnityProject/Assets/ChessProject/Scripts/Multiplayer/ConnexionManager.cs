@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Net.Sockets;
+using UnityEngine.UI;
 
 public class ConnexionManager : MonoBehaviour
 {
@@ -42,8 +43,8 @@ public class ConnexionManager : MonoBehaviour
     /// </summary>
     void Connect()
     {
-        IP = GameObject.FindGameObjectWithTag("IP").GetComponentInChildren<UnityEngine.UI.Text>().text;
-        Debug.Log("IP = " + IP);
+        IP = GameObject.FindGameObjectWithTag("IP").GetComponentInChildren<Text>().text;
+        GameObject.FindGameObjectWithTag("Canvas").SetActive(false);
         try
         {
             client = new TcpClient(IP, PORT);
