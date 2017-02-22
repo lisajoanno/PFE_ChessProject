@@ -555,7 +555,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: e6a7c639-287b-4f20-b9a1-d991bb09aadd
-  projectName: PFE_UnityProject (4)
-  organizationId: arnaud-garnier
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0

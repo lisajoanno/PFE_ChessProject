@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000010997545680}
+  m_IsPrefabParent: 1
+--- !u!1 &1000010997545680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012592626772}
+  - 114: {fileID: 114000012493269224}
+  - 114: {fileID: 114000010413768602}
+  - 114: {fileID: 114000011740161054}
+  m_Layer: 0
+  m_Name: GamePlay
+  m_TagString: GamePlay
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000012592626772
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010997545680}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33, y: 97.18448, z: 21.265915}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000010413768602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010997545680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbcde6325138e9439bbf7aca1abf7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pawnHeightInScene: 40
+--- !u!114 &114000011740161054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010997545680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795271dd35d624c4cb884fc3e2fc7526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamTurnText: {fileID: 0}
+  YourTeamText: {fileID: 0}
+--- !u!114 &114000012493269224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010997545680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e639081f837135e43a58129a7247f530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatFirstCanSelect:
+    serializedVersion: 2
+    m_Bits: 512
+  whatSecondCanSelect:
+    serializedVersion: 2
+    m_Bits: 256
+  selectColor: {r: 0.21723615, g: 0.7205882, b: 0.2831927, a: 0}
+  possibleSquaresColor: {r: 1, g: 0, b: 0, a: 0}
+  cubeObjTarget: {fileID: 0}

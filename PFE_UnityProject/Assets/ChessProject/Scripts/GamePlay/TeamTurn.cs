@@ -65,8 +65,9 @@ public class TeamTurn : MonoBehaviour {
     /// <returns></returns>
     public bool thisTeamCanPlay(int team)
     {
-        if (team == currentTeamPlaying && team == yourTeam) return true;
-        else return false;
+        //if (team == currentTeamPlaying && team == yourTeam) return true;
+        //else return false;
+        return true;
         // ((team > 1) || (team < 0) || currentTeamPlaying > 1 || (currentTeamPlaying < 0)) 
     }
 
