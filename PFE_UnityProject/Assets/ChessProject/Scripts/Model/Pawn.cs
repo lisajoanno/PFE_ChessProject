@@ -45,7 +45,7 @@ public class Pawn : ChessElement {
             this.team = value;
             // If the team is 0, the color is white
             // If the team is 1, it's the adverse team so the color is black
-            Color colorTeam = (team == 0) ? Color.blue : Color.black;
+            Color colorTeam = (team == 0) ? Color.white : Color.black;
             this.Color = colorTeam;
             ResetChessElementColor();
         }
@@ -54,13 +54,13 @@ public class Pawn : ChessElement {
 
     void Start()
     {
-        Move mv = new Move(new Vector2(1, 1), true, 10);
+        Move mv = new Move(new Vector2(1, 1), true, 5);
         moveCasesIn.Add(mv);
-        mv = new Move(new Vector2(-1, -1), true, 10);
+        mv = new Move(new Vector2(-1, -1), true, 5);
         moveCasesIn.Add(mv);
-        mv = new Move(new Vector2(1, -1), true, 10);
+        mv = new Move(new Vector2(1, -1), true, 5);
         moveCasesIn.Add(mv);
-        mv = new Move(new Vector2(-1, 1), true, 10);
+        mv = new Move(new Vector2(-1, 1), true, 5);
         moveCasesIn.Add(mv);
 
         UpdateSelectableCases();
