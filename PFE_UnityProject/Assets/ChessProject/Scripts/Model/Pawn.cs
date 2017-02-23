@@ -45,7 +45,7 @@ public class Pawn : ChessElement {
             this.team = value;
             // If the team is 0, the color is white
             // If the team is 1, it's the adverse team so the color is black
-            Color colorTeam = (team == 0) ? Color.white : Color.black;
+            Color colorTeam = (team == 0) ? Color.blue : Color.black;
             this.Color = colorTeam;
             ResetChessElementColor();
         }
@@ -103,7 +103,7 @@ public class Pawn : ChessElement {
 
                     //prepare the list of matrices
                     convertMatrices = new List<int[,]>();
-                    Debug.Log(current.board == null);
+
                     current = current.board.GetPositionFromTo(current.coo, newMove, ref convertMatrices);
 
                     // If there is a pawn on the next square, it stops the movement, so canContinue = false

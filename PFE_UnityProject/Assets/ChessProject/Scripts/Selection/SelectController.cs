@@ -77,7 +77,7 @@ public class SelectController : MonoBehaviour
                         //do the move; eat the pawn at the selected square if needed
 
                         ResetAllSelection();
-
+                        
                         moveCtrl.Move(pawn, square);
                     }
                 }
@@ -151,7 +151,7 @@ public class SelectController : MonoBehaviour
             if (select[0].HasSthSelected)
             {
                 pawn = select[0].LastSelected.GetComponent<Pawn>();
-                Debug.Log("PAWN SELECTABLE CASES: " + pawn.PossibleMoveCases.ToString());
+
                 if (pawn.PossibleMoveCases.Contains(newSelected.GetComponent<Square>().Position))
                 {
                     select[1].LaunchSelect(newSelected);

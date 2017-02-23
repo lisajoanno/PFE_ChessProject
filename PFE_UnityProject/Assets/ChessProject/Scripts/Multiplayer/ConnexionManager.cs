@@ -11,6 +11,8 @@ public class ConnexionManager : MonoBehaviour
     private static String IP_MAC = "10.212.119.247"; 
     private String IP;
     private static Int32 PORT = 1234;
+    // if the player doesn't want to connect to the server and play locally
+    bool isLocal = true;
 
     // The controller of moves, to execute the moves received from the other player
     MoveController moveController;
@@ -21,20 +23,20 @@ public class ConnexionManager : MonoBehaviour
     /// <returns>the team of this client (0 or 1)</returns>
     public int StartConnexion()
     {
-        //TODO uncomment toute la fonction
         // Init of move controller via the scene
         moveController = GameObject.FindGameObjectWithTag("GamePlay").GetComponentInChildren<MoveController>();
         // Init of the connexion
-        Connect(); 
+        Connect();
+
+        // if local, just return of the team and nothing else is important
+        if (isLocal) return 0;
+
+        // if not, initializations
+
         // obligé de faire un write avant de lancer la coroutine, sinon ça plante
         Write(Builder(0, 0, 0, 0, 0, 0));
         // On lance la coroutine du read
         StartCoroutine(Read());
-
-        //stream.Close();
-        //client.Close();
-
-        // TODO GET THE TEAM FROM SERVER
         return 0;
     }
 
@@ -44,7 +46,10 @@ public class ConnexionManager : MonoBehaviour
     void Connect()
     {
         IP = GameObject.FindGameObjectWithTag("IP").GetComponentInChildren<Text>().text;
+        // disabling the canvas
         GameObject.FindGameObjectWithTag("Canvas").SetActive(false);
+        isLocal = (IP == "local" || IP == "");
+        if (isLocal) return;
         try
         {
             client = new TcpClient(IP, PORT);
@@ -113,9 +118,9 @@ public class ConnexionManager : MonoBehaviour
     {
         Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
         // Send the message to the connected TcpServer.
-        //TODO uncomment
-        stream.Write(data, 0, data.Length);
-        //Debug.Log("Sent: " + message);
+        // if the game is local, no write on server needed
+
+        if (!isLocal) stream.Write(data, 0, data.Length);
     }
 
     /// <summary>
@@ -134,8 +139,6 @@ public class ConnexionManager : MonoBehaviour
                 i = stream.Read(bytes, 0, bytes.Length);
                 // Translate data bytes to a ASCII string.
                 data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                //Debug.Log("Received: " + data);
-
                 // Make the move received from the other player
                 try
                 {
@@ -149,6 +152,4 @@ public class ConnexionManager : MonoBehaviour
             yield return null;
         }
     }
-
-
 }
