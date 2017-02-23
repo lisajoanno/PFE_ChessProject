@@ -23,9 +23,13 @@ public class TeamTurn : MonoBehaviour {
     // Text of the team turn
     [SerializeField]
     private Text teamTurnText;
+    [SerializeField]
+    private Text teamTurnText2;
     // Text of the team you are playing
     [SerializeField]
     private Text YourTeamText;
+    [SerializeField]
+    private Text YourTeamText2;
 
     void Start()
     {
@@ -54,7 +58,8 @@ public class TeamTurn : MonoBehaviour {
         set
         {
             this.yourTeam = value;
-            this.YourTeamText.text = "Your team : " + this.yourTeam;
+            this.YourTeamText.text = "Equipe " + this.yourTeam;
+            this.YourTeamText2.text = "Equipe " + this.yourTeam;
         }
     }
 
@@ -95,7 +100,8 @@ public class TeamTurn : MonoBehaviour {
     /// </summary>
     private void UpdateText()
     {
-        teamTurnText.text = "Time for team " + currentTeamPlaying + " to play !";
+        teamTurnText.text = "Tour de l'équipe " + currentTeamPlaying;
+        teamTurnText2.text = "Tour de l'équipe " + currentTeamPlaying;
     }
 
     /// <summary>
