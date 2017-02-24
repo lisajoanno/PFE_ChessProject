@@ -58,8 +58,18 @@ public class TeamTurn : MonoBehaviour {
         set
         {
             this.yourTeam = value;
-            this.YourTeamText.text = "Equipe " + this.yourTeam;
-            this.YourTeamText2.text = "Equipe " + this.yourTeam;
+            switch (this.yourTeam)
+            {
+                case 0:
+
+                    this.YourTeamText.text = "Equipe blanche";
+                    this.YourTeamText2.text = "Equipe blanche";
+                    break;
+                case 1:
+                    this.YourTeamText.text = "Equipe noire";
+                    this.YourTeamText2.text = "Equipe noire";
+                    break;
+            }
         }
     }
 
@@ -121,8 +131,16 @@ public class TeamTurn : MonoBehaviour {
     /// </summary>
     private void UpdateText()
     {
-        teamTurnText.text = "Tour de l'équipe " + currentTeamPlaying;
-        teamTurnText2.text = "Tour de l'équipe " + currentTeamPlaying;
+        switch (currentTeamPlaying){
+            case 0:
+                teamTurnText.text = "Tour des blancs";
+                teamTurnText2.text = "Tour des blancs";
+                break;
+            case 1:
+                teamTurnText.text = "Tour des noirs";
+                teamTurnText2.text = "Tour des noirs";
+                break;
+        }
     }
 
     /// <summary>
@@ -138,7 +156,6 @@ public class TeamTurn : MonoBehaviour {
                 pawn = square.GetComponentInChildren<Pawn>();
                 if (pawn)
                 {
-                    //Debug.Log("je fais qqchose");
                     pawn.UpdateSelectableCases();
                 }
             }
