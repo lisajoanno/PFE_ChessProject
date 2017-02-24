@@ -70,9 +70,7 @@ public class TeamTurn : MonoBehaviour {
     /// <returns></returns>
     public bool thisTeamCanPlay(int team)
     {
-        //if (team == currentTeamPlaying && team == yourTeam) return true;
-        //else return false;
-        return true;
+        return (team == currentTeamPlaying && team == yourTeam);
         // ((team > 1) || (team < 0) || currentTeamPlaying > 1 || (currentTeamPlaying < 0)) 
     }
 
@@ -82,7 +80,11 @@ public class TeamTurn : MonoBehaviour {
     /// </summary>
     public void ChangeTeam()
     {
-        if (currentTeamPlaying == 0) currentTeamPlaying = 1;
+
+        if (currentTeamPlaying == 0)
+        {
+            currentTeamPlaying = 1;
+        }
         else if (currentTeamPlaying == 1) currentTeamPlaying = 0;
         else
         {
@@ -93,6 +95,25 @@ public class TeamTurn : MonoBehaviour {
 
         // update of selectable cases of all pawns
         UpdateAllSelectableCases();
+    }
+
+    private void CheckObjectives()
+    {
+        GameObject whiteKing = GameObject.FindGameObjectWithTag("blackKing");
+        GameObject blackKing = GameObject.FindGameObjectWithTag("whiteKing");
+
+        if(whiteKing == null)
+        {
+            Debug.Log("Black wins!");
+            this.YourTeamText.text = "Black wins!";
+            currentTeamPlaying = 2;
+        }
+        if(blackKing == null)
+        {
+            Debug.Log("White wins!");
+            this.YourTeamText.text = "White wins!";
+            currentTeamPlaying = 2;
+        }
     }
 
     /// <summary>
