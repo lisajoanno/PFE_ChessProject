@@ -8,7 +8,7 @@ public class ConnexionManager : MonoBehaviour
 {
     TcpClient client;
     NetworkStream stream;
-    private static String IP_MAC = "10.212.119.247"; 
+    private static String IP_MAC = "10.212.119.247";
     private String IP;
     private static Int32 PORT = 1234;
     // if the player doesn't want to connect to the server and play locally
@@ -16,6 +16,9 @@ public class ConnexionManager : MonoBehaviour
 
     // The controller of moves, to execute the moves received from the other player
     MoveController moveController;
+
+    [SerializeField][Range(0, 1)]
+    int team;
 
     /// <summary>
     /// Initialisation of the multiplayer connexion.
@@ -37,7 +40,7 @@ public class ConnexionManager : MonoBehaviour
         Write(Builder(0, 0, 0, 0, 0, 0));
         // On lance la coroutine du read
         StartCoroutine(Read());
-        return 0;
+        return team;
     }
 
     /// <summary>

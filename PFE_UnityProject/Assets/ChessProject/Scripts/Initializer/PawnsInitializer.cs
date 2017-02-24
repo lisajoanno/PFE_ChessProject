@@ -5,8 +5,10 @@ using System.Collections.Generic;
 public class PawnsInitializer : MonoBehaviour {
 
     // Pour le test (automatisé par la suite)
-    //TODO virer ça
-    public GameObject goTest;
+    public GameObject go1;
+    public GameObject go2;
+    public GameObject go3;
+    public GameObject go4;
 
     // List of all PAWNS of the game (by Position, so Board and Vector2)
     private IDictionary<Position, Pawn> positions = new Dictionary<Position, Pawn>();
@@ -24,33 +26,27 @@ public class PawnsInitializer : MonoBehaviour {
         return GameObject.FindGameObjectWithTag("BoardInitializer").GetComponent<BoardInitializer>().boards;
     }
 
+    private void initPawn(GameObject goTest, int team, string name, int board, Vector2 pos)
+    {
+        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[board], pos);
+        GameObject go = PlacePawn(goTest);
+        go.gameObject.name = name;
+        go.GetComponent<Pawn>().Team = team;
+        go.GetComponent<Pawn>().Position = new Position(getBoards()[board], pos);
+    }
+
     // Use this for initialization
     public void Initialize() {
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(1, 0));
-        GameObject hehe = PlacePawn(goTest);
-        hehe.gameObject.name = "pawn hehe";
-        hehe.GetComponent<Pawn>().Team = 0;
-        hehe.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(1, 0));
-        
+        initPawn(go1, 0, "hehe1", 0, new Vector2(0, 0));
+        initPawn(go2, 0, "hehee1", 0, new Vector2(1, 0));
+        initPawn(go2, 0, "heheee1", 0, new Vector2(2, 0));
+        initPawn(go3, 0, "heheeee1", 0, new Vector2(3, 0));
 
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(0, 1));
-        GameObject hoho = PlacePawn(goTest);
-        hoho.gameObject.name = "pawn hoho";
-        hoho.GetComponent<Pawn>().Team = 0;
-        hoho.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(0, 1));
-        
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(3, 2));
-        GameObject hihi = PlacePawn(goTest);
-        hihi.gameObject.name = "pawn hihi";
-        hihi.GetComponent<Pawn>().Team = 1;
-        hihi.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(3, 2));
-        
-        goTest.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(2, 3));
-        GameObject haha = PlacePawn(goTest);
-        haha.gameObject.name = "pawn haha";
-        haha.GetComponent<Pawn>().Team = 1;
-        haha.GetComponent<Pawn>().Position = new Position(getBoards()[0], new Vector2(2, 3));
-        
+        initPawn(go1, 1, "hehe2", 3, new Vector2(0, 0));
+        initPawn(go2, 1, "hehee2", 3, new Vector2(1, 0));
+        initPawn(go2, 1, "heheee2", 3, new Vector2(2, 0));
+        initPawn(go3, 1, "heheeee2", 3, new Vector2(3, 0));
+
     }
 
     /// <summary>
