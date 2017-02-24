@@ -13,3 +13,7 @@ EditorBuildSettings:
     path: Assets/ChessProject/Scenes/GameUI/ServerSelect.unity
   - enabled: 1
     path: Assets/ChessProject/Scenes/FinalScene.unity
+  - enabled: 1
+    path: Assets/ChessProject/Scenes/GameUI/VictoryScene.unity
+  - enabled: 1
+    path: Assets/ChessProject/Scenes/GameUI/DefeatScene.unity

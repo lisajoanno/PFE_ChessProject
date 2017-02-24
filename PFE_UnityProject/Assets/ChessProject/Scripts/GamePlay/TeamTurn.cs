@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TeamTurn : MonoBehaviour {
 
@@ -114,14 +115,24 @@ public class TeamTurn : MonoBehaviour {
 
         if(whiteKing == null)
         {
-            Debug.Log("Black wins!");
-            this.YourTeamText.text = "Black wins!";
+            if(yourTeam == 0)
+            {
+                SceneManager.LoadScene(4);
+            } else
+            {
+                SceneManager.LoadScene(3);
+            }
             currentTeamPlaying = 2;
         }
         if(blackKing == null)
         {
-            Debug.Log("White wins!");
-            this.YourTeamText.text = "White wins!";
+            if(yourTeam == 1)
+            {
+                SceneManager.LoadScene(4);
+            } else
+            {
+                SceneManager.LoadScene(3);
+            }
             currentTeamPlaying = 2;
         }
     }
